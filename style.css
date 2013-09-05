@@ -980,6 +980,10 @@ p img,
 	width:30%;
 }	/* need this for Firefox... */
 
+
+
+
+
 } /* images */
 
 @media all { /* =Sidebars
@@ -1015,9 +1019,31 @@ p img,
 	max-width:100%;
 }
 #sidebar_header table {
-	width:30%;
-        margin: 0px 0px 0px 0px ; 
+	width:40%;
+        margin: 20px 40px 20px 0px ; 
 }
+ul.header-toolbar { 
+  text-transform: uppercase ; 
+}
+ul.header-toolbar li a { 
+  color: #7C6A55 ; 
+  font-size: 1.2em ; 
+}
+ul.header-toolbar li p { 
+  margin: 0 ; 
+  padding: 0 ; 
+  display: inline ; 
+  float: both ; 
+}
+ul.header-toolbar li { 
+  margin: 1em 0.4em 1em 0.4em ; 
+  list-style: none ; 
+  display: inline ; 
+  float: both ; 
+}
+
+
+
 
 .weaverii_widget_login span { 
   display: none ; 
@@ -1516,7 +1542,6 @@ h1#site-title {
 
 .menu_bar {
 	font-size:120%;	/*@ font size of menu items */
-        text-transform: uppercase ; 
 }
 
 .weaveriip_vertical_menu .menu_bar {
@@ -2804,5 +2829,5 @@ aawaa-logo.png
 
 /* AAWAA Catalyst slogan * /
 aawaa-header-slogan.png
-
 */
+

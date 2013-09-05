@@ -39,7 +39,45 @@ if (is_active_sidebar($harea)
     weaverii_trace_sidebar(__FILE__);
 ?>
 
-	<table id="header_widget_table"><tr>
+	<table id="header_widget_table">
+          <tr>
+
+<!-- BEGIN adapted content for sidebar-header, basically a loop for the tools category -->
+            <td>
+<?php
+
+ $querystr = "
+    SELECT $wpdb->posts.* 
+    FROM $wpdb->posts, $wpdb->postmeta
+    WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id 
+    AND $wpdb->postmeta.meta_key = 'Tool Order' 
+    AND $wpdb->posts.post_status = 'publish' 
+    AND $wpdb->posts.post_type = 'post'
+    ORDER BY $wpdb->postmeta.meta_value ASC
+ ";
+
+ $pageposts = $wpdb->get_results($querystr, OBJECT);
+ global $post; ?>
+
+              <ul class="header-toolbar">
+ <?php foreach ($pageposts as $post): ?>
+   <?php setup_postdata($post); ?>
+   <?php $this_title = get_the_title() ; ?>
+   <?php $this_permalink = get_permalink() ?>
+   <?php if ($this_title == "Home") { $this_permalink = get_site_url() ; } ?>
+   <?php if ($this_title == "Log In") { $this_permalink = get_site_url() . "/wp-admin" ; } ?>
+   <?php if (($this_title == "Social Media Toolbar Buttons") ||
+             ($this_title == "Donate Toolbar Button")) { ?> 
+                <li><?php the_content(); ?></li>
+   <?php } else { ?> 
+                <li><a href="<?php echo $this_permalink ?>"><?php echo get_the_title(); ?></a></li>
+   <?php } ?>
+ <?php endforeach; ?>
+              </ul>
+            </td>
+
+<!-- END adapted content for sidebar-header -->
+
 <?php
     // here, we duplicate the functionality of dynamic_sidebar so we can add our own styling
     for (;;) {		// so we can break instead of return
@@ -72,7 +110,7 @@ if (is_active_sidebar($harea)
 		if ($widget_num > 0 && ($widget_num % 4) == 0) {	// new row every 4 widgets
 		    echo '</tr><tr>';
 		}
-
+/*
 		$params = array_merge(
 			array( array_merge( $sidebar, array('widget_id' => $id, 'widget_name' => $wp_registered_widgets[$id]['name']) ) ),
 			(array) $wp_registered_widgets[$id]['params']
@@ -101,13 +139,15 @@ if (is_active_sidebar($harea)
 			call_user_func_array($callback, $params);
 			$did_one = true;
 		}
+*/
 		$widget_num++;
 	} // do each widget
 	break;	// get out of the for (;;)
     }
-
 ?>
-	</tr></table>
+<!-- end of sidebar-header loop -->
+	  </tr>
+        </table>
 	</div><!-- #sidebar_header -->
 
 <?php
