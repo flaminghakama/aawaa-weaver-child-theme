@@ -233,6 +233,13 @@ img,
 
 /* -- Plugin Helpers */
 
+span.absolute-add-search { 
+   position: absolute;  
+    top: 138px;  
+    right: 20px;    
+}
+
+
 #branding .meteor-slides {
 	clear:both;
 }
@@ -1019,7 +1026,7 @@ p img,
 	max-width:100%;
 }
 #sidebar_header table {
-	width:40%;
+	max-width:400px ; 
         margin: 20px 40px 20px 0px ; 
 }
 ul.header-toolbar { 
@@ -1195,6 +1202,7 @@ ins {
 }
 #site-description {
 	font-size:90%;
+        height: 67px ;
 }
 .widget-area {
 	font-size:120%;
@@ -1400,7 +1408,7 @@ input#s {
 .title-description {
 	border: 0px solid green;
 	float: left ;
-	width: 700px ; 
+	width: 700px ;
 }
 .wvr_gadget,
 #branding img,
@@ -1544,6 +1552,11 @@ h1#site-title {
 	font-size:120%;	/*@ font size of menu items */
 }
 
+#access {
+        border: solid 0px purple ; 
+}
+
+
 .weaveriip_vertical_menu .menu_bar {
 	background-image:none;
 	font-size:100%;
@@ -1571,6 +1584,7 @@ h1#site-title {
 
 #nav-bottom-menu, #nav-top-menu {
 	min-height:38px;	/*@ matches menubar height */
+	text-transform: uppercase ; 
 }
 .menu_bar div {
 	margin:0 22px;		/*@ margin from left/right */
@@ -1685,13 +1699,24 @@ h1#site-title {
 	padding-left:4px;
 	max-height:38px;
 }
+
 .menu-add {
-	display:inline !important;
+	display:inline /* !important; */ ; 
+	float:left;
+	font-size:100%;
+	padding-right:4px;
+	max-height:38px;
+}
+.menu-add-nav-bottom {
+        border: solid 1px purple ; 
+	display:inline /* !important; */ ; 
+	text-align: right ; 
 	float:right;
 	font-size:100%;
 	padding-right:4px;
 	max-height:38px;
 }
+
 .menu-add-left span.add-text,
 .menu-add span.add-text {
 	line-height:24px;

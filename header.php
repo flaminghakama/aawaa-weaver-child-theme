@@ -103,6 +103,17 @@ weaverii_setup_mobile();
 </head>
 
 <body <?php body_class(); ?>>
+
+<!-- Added Search -->
+<span class="absolute-add-search">
+<form role="search" style="background:transparent;" method="get" class="searchform" action="<?php get_site_url() ; ?>" >
+	<label class="screen-reader-text" for="s">Search for:</label>
+	<input type="search" value="" name="s" id="s" placeholder="Search Site" />
+	<input class="searchformimg" type="image" src="<?php echo get_template_directory_uri() ; ?>/images/search_button.gif" alt="Search" />
+	</form></span>
+<!-- END Added Search -->
+
+
 <a href="#page-bottom" id="page-top">&darr;</a> <!-- add custom CSS to use this page-bottom link -->
 <?php
     weaverii_trace_template(__FILE__);
@@ -122,6 +133,7 @@ weaverii_setup_mobile();
 	    get_template_part('nav','top');
 ?>
 	<header id="branding" role="banner">
+
 <?php
 	    /* ======== SITE LOGO and TITLE ======== */
 	    $title = (weaverii_getopt('_wii_mobile_site_title') && weaverii_use_mobile('mobile') )
