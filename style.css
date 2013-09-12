@@ -1023,14 +1023,27 @@ p img,
 	vertical-align:top;
 }
 #sidebar_header table td img {
-	max-width:100%;
+	/* max-width:40%; */
 }
 #sidebar_header table {
 	max-width:400px ; 
         margin: 20px 40px 20px 0px ; 
 }
+
+#header_widget_table { 
+   border: solid 1px purple ; 
+}
+#header_widget_table td { 
+   text-align: right ; 
+}
 ul.header-toolbar { 
   text-transform: uppercase ; 
+}
+ul.header-toolbar li { 
+  margin: 1em 0.4em 1em 0.4em ; 
+  list-style: none ; 
+  display: inline ; 
+  float: both ; 
 }
 ul.header-toolbar li a { 
   color: #7C6A55 ; 
@@ -1039,17 +1052,11 @@ ul.header-toolbar li a {
 ul.header-toolbar li p { 
   margin: 0 ; 
   padding: 0 ; 
-  display: inline ; 
-  float: both ; 
+  display: inline-block ; 
 }
-ul.header-toolbar li { 
-  margin: 1em 0.4em 1em 0.4em ; 
-  list-style: none ; 
-  display: inline ; 
-  float: both ; 
+#branding ul.header-toolbar li p img { 
+  display: inline-block ; 
 }
-
-
 
 
 .weaverii_widget_login span { 
