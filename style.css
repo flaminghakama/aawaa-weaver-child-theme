@@ -1031,7 +1031,7 @@ p img,
 }
 
 #header_widget_table { 
-   border: solid 1px purple ; 
+   border: solid 0px purple ; 
 }
 #header_widget_table td { 
    text-align: right ; 
