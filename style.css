@@ -1496,6 +1496,7 @@ h1#site-title {
 	font-size:110%;
 	padding:5px 10px 4px 10px;
 	line-height:2.5;	/* needs own line-height */
+        display: none ; 
 }
 
 .infobar_right {
@@ -2479,7 +2480,7 @@ ol.commentlist li.comment div blockquote p code {
 ----------------------------------------------- */
 #colophon {
 	background:#FFDEAD;
-	border-top:4px solid #888;
+	border-top:1px solid #7C6A55 ; 
 	clear:both;
 	margin-top:0;		/* margin at the top of the footer */
 }
@@ -2530,6 +2531,8 @@ ol.commentlist li.comment div blockquote p code {
 #site-ig-wrap {
 	background:inherit;
 	min-height:2.0em;
+        margin-left: 340px ;
+        font-size: 1.2em ;  
 }
 
 #site-info {
@@ -2546,12 +2549,53 @@ ol.commentlist li.comment div blockquote p code {
 	font-weight:normal;
  	font-style:italic;
 	padding-right:3.0em;
+	display: none ; 
 }
 
 #site-generator a {
 	font-weight:normal;
 }
 } /* footer */
+
+
+div.footer_links {    
+   border: solid 0px yellow ; 
+   overflow: hidden ;
+   margin: 1.5em 1.5em 1em 380px ; 
+   font-size: 1.4em ; 
+}
+#colophon a, 
+#colophon a:visited, 
+#colophon a:hover, 
+#colophon .footer_links a, 
+#colophon .footer_links a:visited,
+#colophon .footer_links a:hover {    
+   color: #7C6A55 ; 
+}
+div.footer_group_column { 
+   display: block ; 
+   float: left ; 
+   margin: 0 .5em 0 0  ; 
+}
+.footer_group_column span { 
+   display: block ;
+   text-transform: uppercase ; 
+   font-size: 1.1em ; 
+   line-height: 1.4em  ;
+   font-weight: bold ;  
+}
+div.footer_list { 
+   display: inline-block ; 
+   float: left ; 
+   margin: 0 4em 0 0 ; 
+}
+.footer_list ul { 
+  margin-left: 0 ; 
+}
+.footer_list ul li { 
+  list-style: none ; 
+  line-height: 1.5em ; 
+}
 
 @media all { /* =RSS Feed, Calendar
 ----------------- */

@@ -23,7 +23,115 @@ weaverii_trace_template(__FILE__);
     if (!weaverii_getopt('wii_hide_footer') && !weaverii_is_checked_page_opt('ttw-hide-footer')) {
 ?>
 	<footer id="colophon" role="contentinfo">
-	  <div>
+<!-- BEGIN footer nav -->
+<?php
+
+  /* loop through pages/posts with the properties 
+     "Footer Group" and "Footer Sort Order" and Footer Group Sort Order" 
+   */
+
+ $querystr = "
+    SELECT $wpdb->posts.* 
+    FROM $wpdb->posts, $wpdb->postmeta
+    WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id 
+    AND $wpdb->postmeta.meta_key = 'Footer Group' 
+    AND $wpdb->posts.post_status = 'publish' 
+    ORDER BY $wpdb->postmeta.meta_value ASC
+ ";
+
+ $pageposts = $wpdb->get_results($querystr, OBJECT);
+ global $post; 
+
+ //  Array to let us determine the order of the columns in the footer
+ $footer_group_order = array() ; 
+
+ //  Array to let us assemble the HTML for each column in the footer
+ $footer_group = array();
+  
+ foreach ($pageposts as $post) { 
+
+   $postID = get_the_ID() ; 
+   $postCustom = get_post_custom($postID) ;
+   $postFooterGroup = $postCustom['Footer Group'][0] ; 
+   $postFooterSortOrder = $postCustom['Footer Sort Order'][0] ; 
+   $postFooterGroupSortOrder = $postCustom['Footer Group Sort Order'][0]  ; 
+
+   //echo("<p>") ; 
+   //print_r($postCustom) ; 
+   //echo("</p>\n\n") ;
+
+   //  If this post has a footer group sort order, 
+   //  make note of the sort order of this group.
+   if ( $postFooterGroupSortOrder != "" )  {
+     $footer_group_order[$postFooterGroupSortOrder] = $postFooterGroup ; 
+   }
+
+   $this_title = get_the_title() ;
+   $this_permalink = get_permalink() ; 
+
+   //  If we have not yet seen entries for this group, 
+   //  initialize the array of entries for this group.
+   if ( ! array_key_exists($postFooterGroup, $footer_group) ) {
+     $footer_group[$postFooterGroup] = array() ;
+   }
+
+   //  Determine if this is the first (sort order = 0) entry in the list
+   //  or a subsequent one, format it accordingly, then add it to the list
+   $list_item = "" ; 
+   if ( $postFooterSortOrder == 0 ) { 
+     $list_item = "    <span><a href='$this_permalink'>$this_title</a></span>\n" ; 
+   } else {
+     $list_item = "        <li><a href='$this_permalink'>$this_title</a></li>\n" ; 
+   }
+   $footer_group[$postFooterGroup][$postFooterSortOrder] = $list_item ; 
+ }
+
+
+ $footer_html = "<div class='footer_links'>\n" ; 
+
+ ksort($footer_group_order) ; 
+ foreach ($footer_group_order as $order => $group_name ) { 
+
+   //echo "<p>dealing with group order $order: $group_name</p>\n" ;   
+   $footer_html .= "  <div class='footer_group_column'>\n" ; 
+
+   $this_group = $footer_group[$group_name] ; 
+   ksort($this_group) ; 
+   //echo("<p>") ; print_r($this_group) ; echo("</p>\n") ; 
+
+   $count = 0 ; 
+   foreach ($this_group as $html ) { 
+
+     //echo("<p>\$html = $html</p>\n") ; 
+
+     if ( $count == 0 ) { 
+       $footer_html .= $html ; 
+
+     } else if ( ($count % 4) == 1 ) { 
+       $footer_html .= "    <div class='footer_list'>\n" . 
+                       "      <ul class='footer_entry'>\n" . 
+     		       $html ; 
+     } else if ( ($count % 4) == 0 ) { 
+       $footer_html .= $html . "      </ul for='footer_entry'>\n" .
+                               "    </div for='footer_list'>\n" ;
+     } else { 
+       $footer_html .= $html ; 
+     }
+     $count++ ; 
+   }
+   if ( ($count % 4) != 1 ) { 
+     $footer_html .= "      </ul for='footer_entry'>\n" . 
+       		     "    </div for='footer_list'>\n" ;
+   }
+   $footer_html .= "  </div for='footer_group_column'>\n" ;
+ }
+ $footer_html .= "</div for='footer_links'>\n" ;
+
+ echo $footer_html ; 
+?>
+
+<!-- END footer nav -->
+
 <?php
 	if (weaverii_getopt_checked( 'wii_footer_inject_move' )) {
 	    weaverii_inject_area('footer');	// here is where the footer options get inserted
@@ -45,7 +153,8 @@ weaverii_trace_template(__FILE__);
 		    echo(do_shortcode($cp));
 	    } else {
 ?>
-	    &copy; <?php echo($year); ?> - <a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+	    <!-- &copy; <?php echo($year); ?> - <a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a> -->
+	    &copy; <?php echo($year); ?> <a href="<?php echo home_url( '/' ) ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">AAWAA</a> | San Francisco CA USA | <a target=_"blank" href="mailto:info@aawaa.net">info@aawaa.net</a>
 <?php
 	    }
 ?>
@@ -91,4 +200,4 @@ weaverii_trace_template(__FILE__);
 ?>
 </body>
 </html>
-<!-- END  footer.php  -->
+<!-- END footer.php  -->
