@@ -477,7 +477,7 @@ h1 {
 h1,h2,
 #content .entry-header h1, #content .entry-header h2 {
 	clear:both;
-	margin:0 0 .1em 0;
+	margin:1.3em 0 .1em 0;
 }
 h3,h4,h5,h6 {
 	clear:both;
@@ -2564,9 +2564,6 @@ div.footer_links {
    margin: 1.5em 1.5em 1em 380px ; 
    font-size: 1.4em ; 
 }
-#colophon a, 
-#colophon a:visited, 
-#colophon a:hover, 
 #colophon .footer_links a, 
 #colophon .footer_links a:visited,
 #colophon .footer_links a:hover {    
