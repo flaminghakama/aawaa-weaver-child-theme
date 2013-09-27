@@ -66,8 +66,8 @@ if (is_active_sidebar($harea)
    <?php $this_permalink = get_permalink() ?>
    <?php if ($this_title == "Home") { $this_permalink = get_site_url() ; } ?>
    <?php if ($this_title == "Log In") { $this_permalink = get_site_url() . "/wp-admin" ; } ?>
-   <?php if (($this_title == "Social Media Toolbar Buttons")) { /* ||
-             ($this_title == "Donate Toolbar Button")) { */ ?>
+   <?php if (($this_title == "Social Media Toolbar Buttons") ||
+             ($this_title == "Donate Toolbar Button")) { ?>
                 <li><?php the_content() ; ?></li>
    <?php } else { ?> 
                 <li><a href="<?php echo $this_permalink ?>"><?php echo get_the_title(); ?></a></li>

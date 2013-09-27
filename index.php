@@ -18,7 +18,7 @@ if ( weaverii_getopt('wii_infobar_location') == 'top' ) get_template_part('infob
 weaverii_inject_area('premain');
 echo("\t<div id=\"main\">\n");
 weaverii_trace_template(__FILE__);
-weaverii_get_sidebar_left('index');
+//weaverii_get_sidebar_left('index');
 ?>
 		<div id="container_wrap"<?php weaverii_get_page_class('index', 'container-index'); ?>>
 <?php		if ( weaverii_getopt('wii_infobar_location') == 'content' ) get_template_part('infobar');
@@ -29,6 +29,7 @@ weaverii_get_sidebar_left('index');
 
 <?php 			if ( have_posts() ) {
 
+                          /*
 			    $paged = weaverii_get_page();
 
 			    weaverii_content_nav( 'nav-above' );
@@ -39,8 +40,6 @@ weaverii_get_sidebar_left('index');
 			    $sticky_one = weaverii_getopt_checked( 'wii_blog_sticky_one' ) && $paged <= 1;
 			    $first_one = weaverii_getopt_checked( 'wii_blog_first_one' ) && $paged <= 1;
 			    $masonry_wrap = false;	// need this for one-column posts
-
-			    /* Start the Loop */
 
 			    weaverii_post_count_clear();
 
@@ -90,15 +89,16 @@ weaverii_get_sidebar_left('index');
 				    $sticky_one = false;
 				}   // end switch num cols
 				weaverii_masonry('end-post');
-				} /* end first one col */
+				} /* end first one col * /
 
 			    }	// end while have posts
 			    weaverii_masonry('end-posts');
-
 			    weaverii_content_nav( 'nav-below' );
+                          */
 			} else {
 			    weaver_not_found_search(__FILE__);
-			} ?>
+			} 
+                         ?>
 
 		    </div><!-- #content -->
 <?php		weaverii_get_sidebar_bottom('index'); ?>

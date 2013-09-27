@@ -235,7 +235,7 @@ img,
 
 span.absolute-add-search { 
    position: absolute;  
-    top: 138px;  
+    top: 110px;  
     right: 20px;    
 }
 
@@ -1044,6 +1044,7 @@ ul.header-toolbar li {
   list-style: none ; 
   display: inline ; 
   float: both ; 
+  vertical-align: top ; 
 }
 ul.header-toolbar li a { 
   color: #7C6A55 ; 
@@ -1407,7 +1408,7 @@ input#s {
 #branding {
         border: solid 0px purple ; 
         overflow:auto; 
-        background: url(images/graphics/aawaa-header-logo-slogan-bg.png) ;
+        background: url(images/graphics/aawaa-header-logo-left.png) ;
         background-repeat: no-repeat ; 
 	position:relative;
 	z-index:2;
