@@ -2595,6 +2595,51 @@ div.footer_list {
   line-height: 1.5em ; 
 }
 
+#container_wrap.homepage_slideshow {
+	float:right;
+	margin:0;
+	padding:0;
+	width:96%;
+}
+div.feature { 
+   border: solid 1px yellow ; 
+   overflow: hidden ;
+   margin: 2em ; 
+}
+div.feature div { 
+   margin: 5px ; 
+   padding: 5px ; 
+}
+div.feature_left_col { 
+   border: solid 1px blue ; 
+   overflow: hidden ;   
+   float: left ; 
+   width: 60% ; 
+}
+div.excerpt { 
+   border: solid 1px purple ; 
+   float: right ; 
+   width: 36% ; 
+}
+div.media {
+   border: solid 1px black ; 
+}
+div.meta { 
+   border: solid 1px green ; 
+}
+div.meta p.description {
+}
+div.feature_nav {
+   border: solid 1px red ; 
+   overflow: hidden ;   
+}
+div.selector { 
+  display: inline ; 
+  padding: 15px ; 
+  border: solid 1px brown ; 
+}
+
+
 @media all { /* =RSS Feed, Calendar
 ----------------- */
 .widget_tag_cloud div {
