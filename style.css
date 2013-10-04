@@ -2638,7 +2638,9 @@ div.selector {
   padding: 15px ; 
   border: solid 1px brown ; 
 }
-
+.fake {
+  display: none ; 
+}
 
 @media all { /* =RSS Feed, Calendar
 ----------------- */
