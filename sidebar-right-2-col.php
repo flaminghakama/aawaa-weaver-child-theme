@@ -1,8 +1,7 @@
 <!-- BEGIN  sidebar-right-2-col.php  -->
 <?php
 /**
- * The Right 2 column sidebar
- *
+ * The Right 2 column sidebar *
  * @package WordPress
  * @subpackage Weaver II
  * @since Weaver II 1.0

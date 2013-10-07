@@ -32,15 +32,16 @@ function formatFeature($slide_count,$css_class,$feature_url,$image_url,$title,$d
   $html .= "<div id='slide_$slide_count' class='feature $css_class'>\n" ; 
   $html .= "  <div class='feature_left_col'>\n" ; 
   $html .= "    <div class='media'><a href='$feature_url'><img src='$image_url'></a></div for='media'>\n" ; 
-  $html .= "    <div class='meta'><p class='title'><a href='$feature_url'>$title</a></p>\n<p class='description'>$description</p></div for='meta'>\n" ; 
+  $html .= "    <div class='bottom_left'>\n" ;
+  $html .= "      <div class='meta'><p class='title'><a href='$feature_url'>$title</a></p>\n<p class='description'>$description</p></div for='meta'>\n" ; 
+  if ( $css_class != "fake" ) { 
+    $html .= "      <div class='feature_nav $css_class'></div for='feature_nav'>\n" ;
+  } 
+  $html .= "    </div for='bottom_left'>\n" ;
   $html .= "  </div for='feature_left_col'>\n" ;
   $html .= "  <div class='excerpt'>$excerpt</div for='excerpt'>\n" ; 
 
-  $html .= "</div for='feature'>\n" ;
-
-  if ( $css_class != "fake" ) { 
-    $html .= "<div class='feature_nav $css_class'></div for='feature_nav'>\n" ;
-  } 
+  $html .= "</div for='slide_$slide_count'>\n" ;
 
   return $html ; 
 }
@@ -108,20 +109,26 @@ function formatFeature($slide_count,$css_class,$feature_url,$image_url,$title,$d
     // Add this feature to the list
     $slide_count++ ;    
     $featured[$slide_count] = $this_feature ;
+    $reference_slides = "" ; 
 
     if ( $slide_count == 1 ) { 
 
-      echo formatFeature($slide_count,'actual',$feature_url,$image_url,$title,$description,$excerpt) ; 
+      echo formatFeature('visible','actual',$feature_url,$image_url,$title,$description,$excerpt) ; 
 
       $selectors .= "<div class='selector' id='selector_$slide_count' class='selected'><img src='" . get_stylesheet_directory() . "/images/feature-nav/indicator.png'></div for='selector_$slide_count'>" ; 
 
     } else { 
 
-      echo formatFeature($slide_count,'fake',$feature_url,$image_url,$title,$description,$excerpt) ; 
       $selectors .= "<div class='selector' id='selector_$slide_count' class='not_selected'><img src='" . get_stylesheet_directory() . "/images/feature-nav/indicator.png'></div for='selector_$slide_count'>" ; 
     }
 
+    echo "<!-- adding to reference slide $slide_count -->\n" ; 
+    echo formatFeature($slide_count,'fake',$feature_url,$image_url,$title,$description,$excerpt) ; 
+    // $reference_slides .= 
+
   endforeach;
+
+  echo $reference_slides ; 
 ?>
 
 <script src="<?php echo get_stylesheet_directory_uri() ; ?>/js/jquery-1.6.1.js" type="text/javascript"></script>

@@ -1048,7 +1048,7 @@ ul.header-toolbar li {
 }
 ul.header-toolbar li a { 
   color: #7C6A55 ; 
-  font-size: 1.2em ; 
+  font-size: 1.1em ; 
 }
 ul.header-toolbar li p { 
   margin: 0 ; 
@@ -2533,7 +2533,7 @@ ol.commentlist li.comment div blockquote p code {
 	background:inherit;
 	min-height:2.0em;
         margin-left: 340px ;
-        font-size: 1.2em ;  
+        font-size: 1.0em ;  
 }
 
 #site-info {
@@ -2562,8 +2562,8 @@ ol.commentlist li.comment div blockquote p code {
 div.footer_links {    
    border: solid 0px yellow ; 
    overflow: hidden ;
-   margin: 1.5em 1.5em 1em 380px ; 
-   font-size: 1.4em ; 
+   margin: 1.5em 1.5em 1em 396px ; 
+   font-size: 0.9 em ; 
 }
 #colophon .footer_links a, 
 #colophon .footer_links a:visited,
@@ -2573,7 +2573,7 @@ div.footer_links {
 div.footer_group_column { 
    display: block ; 
    float: left ; 
-   margin: 0 .5em 0 0  ; 
+   margin: .8em .5em 0 0  ; 
 }
 .footer_group_column span { 
    display: block ;
@@ -2585,7 +2585,7 @@ div.footer_group_column {
 div.footer_list { 
    display: inline-block ; 
    float: left ; 
-   margin: 0 4em 0 0 ; 
+   margin: 0 3.4em 0 0 ; 
 }
 .footer_list ul { 
   margin-left: 0 ; 
@@ -2602,41 +2602,56 @@ div.footer_list {
 	width:96%;
 }
 div.feature { 
-   border: solid 1px yellow ; 
+   position: relative ; 
+   max-height: 440px ; 
+   border: solid 0px yellow ; 
    overflow: hidden ;
    margin: 2em ; 
 }
 div.feature div { 
-   margin: 5px ; 
-   padding: 5px ; 
+   margin: 1px ; 
+   padding: 1px ; 
 }
 div.feature_left_col { 
-   border: solid 1px blue ; 
+   border: solid 0px blue ; 
    overflow: hidden ;   
    float: left ; 
-   width: 60% ; 
+   width: 65% ;
+   height: 300px ;  
+}
+div.bottom_left { 
+   position: absolute ; 
+   bottom: 1px ; 
+   left: 1px ; 
+   border: solid 0px green ; 
 }
 div.excerpt { 
-   border: solid 1px purple ; 
+   border: solid 0px purple ; 
    float: right ; 
-   width: 36% ; 
+   width: 33% ; 
+   height: 430px ; 
+}
+div.feature div.media {
+   padding: 20px ; 
 }
 div.media {
-   border: solid 1px black ; 
+   border: solid 0px black ; 
+   text-align: center ;
+   vertical-align: center ;  
 }
 div.meta { 
-   border: solid 1px green ; 
+   border: solid 0px green ; 
 }
 div.meta p.description {
 }
 div.feature_nav {
-   border: solid 1px red ; 
+   border: solid 0px red ; 
    overflow: hidden ;   
 }
 div.selector { 
   display: inline ; 
   padding: 15px ; 
-  border: solid 1px brown ; 
+  border: solid 0px brown ; 
 }
 .fake {
   display: none ; 
