@@ -2645,8 +2645,12 @@ div.meta {
 p.title { 
   font-size: 1.3em;   
 }
+p.title a, p.title a:hover { 
+  color: #7C6A55 ; 
+}
 div.meta p.description {
   font-size: 1.1em;   
+  display: none ; 
 }
 div.feature_nav {
    border: solid 0xp red ; 
