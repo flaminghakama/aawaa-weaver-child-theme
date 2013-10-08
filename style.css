@@ -2604,7 +2604,7 @@ div.footer_list {
 div.feature { 
    position: relative ; 
    max-height: 440px ; 
-   border: solid 0px yellow ; 
+   border: solid 0xp yellow ; 
    overflow: hidden ;
    margin: 2em ; 
 }
@@ -2613,20 +2613,20 @@ div.feature div {
    padding: 1px ; 
 }
 div.feature_left_col { 
-   border: solid 0px blue ; 
+   border: solid 0xp blue ; 
    overflow: hidden ;   
    float: left ; 
    width: 65% ;
-   height: 300px ;  
+   height: 250px ;  
 }
 div.bottom_left { 
    position: absolute ; 
    bottom: 1px ; 
    left: 1px ; 
-   border: solid 0px green ; 
+   border: solid 0xp green ; 
 }
 div.excerpt { 
-   border: solid 0px purple ; 
+   border: solid 0xp purple ; 
    float: right ; 
    width: 33% ; 
    height: 430px ; 
@@ -2635,27 +2635,45 @@ div.feature div.media {
    padding: 20px ; 
 }
 div.media {
-   border: solid 0px black ; 
+   border: solid 0xp black ; 
    text-align: center ;
    vertical-align: center ;  
 }
 div.meta { 
-   border: solid 0px green ; 
+   border: solid 0xp green ; 
 }
 div.meta p.description {
 }
 div.feature_nav {
-   border: solid 0px red ; 
-   overflow: hidden ;   
+   border: solid 0xp red ; 
+   padding: 0px ; 
+   vertical-align: top ; 
+   overflow: hidden ;
+   height:80px ;    
 }
 div.selector { 
-  display: inline ; 
-  padding: 15px ; 
   border: solid 0px brown ; 
+  display: inline-block ; 
+  background-image:url('images/feature-nav/indicator-sprite.png') ; 
+  background-repeat:no-repeat;
+}
+div.selector img { 
+}
+div.feature div.selector { 
+  border: 0px ; 
+  padding: 0px ; 
+  margin: 0px 13px 0px 13px ;  
+}
+div.selector.selected { 
+  background-position:0px 0px ; 
+}
+div.selector.not_selected { 
+  background-position:0px -37px ;
 }
 .fake {
   display: none ; 
 }
+
 
 @media all { /* =RSS Feed, Calendar
 ----------------- */
