@@ -1026,7 +1026,7 @@ p img,
 	/* max-width:40%; */
 }
 #sidebar_header table {
-	max-width:400px ; 
+	/* max-width:700px ;  */
         margin: 20px 40px 20px 0px ; 
 }
 
@@ -1048,7 +1048,7 @@ ul.header-toolbar li {
 }
 ul.header-toolbar li a { 
   color: #7C6A55 ; 
-  font-size: 1.1em ; 
+  font-size: 1.0em ; 
 }
 ul.header-toolbar li p { 
   margin: 0 ; 
@@ -1416,7 +1416,7 @@ input#s {
 .title-description {
 	border: 0px solid green;
 	float: left ;
-	width: 700px ;
+	width: 560px ;
 }
 .wvr_gadget,
 #branding img,
@@ -2596,10 +2596,9 @@ div.footer_list {
 }
 
 #container_wrap.homepage_slideshow {
-	float:right;
-	margin:0;
+	margin:4%;
 	padding:0;
-	width:96%;
+	width:92%;
 }
 div.feature { 
    position: relative ; 
@@ -2630,6 +2629,7 @@ div.excerpt {
    float: right ; 
    width: 33% ; 
    height: 430px ; 
+   vertical-align: center ; 
 }
 div.feature div.media {
    padding: 20px ; 
@@ -2642,7 +2642,11 @@ div.media {
 div.meta { 
    border: solid 0xp green ; 
 }
+p.title { 
+  font-size: 1.3em;   
+}
 div.meta p.description {
+  font-size: 1.1em;   
 }
 div.feature_nav {
    border: solid 0xp red ; 
