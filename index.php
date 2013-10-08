@@ -162,6 +162,9 @@ function formatSelector($slide_count, $class) {
   echo $reference_slides ; 
 ?>
 
+
+<!-- Javascript to control homepage slidshow -->
+
 <script src="<?php echo get_stylesheet_directory_uri() ; ?>/js/jquery-1.6.1.js" type="text/javascript"></script>
 <script language="JavaScript">
 
@@ -179,17 +182,39 @@ function updateFeature(selector_id) {
 
   //alert('title is ' + title) ; 
 
-  $("div.feature.actual div.excerpt").html( excerpt ) ; 
-  $("div.feature.actual div.media a").prop("href", feature_url) ;
-  $("div.feature.actual div.media img").attr({src: image_url}) ; 
-  $("div.feature.actual div.meta p.title a").prop("href", feature_url) ;
-  $("div.feature.actual div.meta p.title a").text(title) ; 
+  var length_out = 1200 ; 
+  var length_in = 700 ; 
+  $("div.feature.actual div.excerpt").fadeOut(function() { length_out,
+    $(this).html(excerpt).fadeIn(length_in) ;
+  }) ;  
+  $("div.feature.actual div.media img").fadeOut(function() {length_out,
+    $(this).attr({src: image_url}).fadeIn(length_in); 
+  });
+  $("div.feature.actual div.meta p.title a").fadeOut(function() {length_out,
+    $(this).text(title).fadeIn(length_in); 
+  });
+
   $("div.feature.actual div.meta p.description").html(description) ;
+  $("div.feature.actual div.media a").prop("href", feature_url) ;
+  $("div.feature.actual div.meta p.title a").prop("href", feature_url) ;
+
+  abortTimer() ;
+  timer_id = setInterval(cycleFeature, <?php echo $duration ; ?>); 
 }
 
 function updateNav(selector_id) {
-  $("div.selector.selected").removeClass("selected not_selected").addClass("not_selected");
-  $("#" + selector_id).removeClass("selected not_selected").addClass("selected");
+
+  var length_out = 6 ; 
+  var length_in = 60 ; 
+  $("div.selector.selected").fadeOut(function() { length_out,
+    $(this).removeClass("selected not_selected").addClass("not_selected").fadeIn(length_in) ;
+  }) ;    
+  $("#" + selector_id).fadeOut(function() { length_out,
+    $(this).removeClass("selected not_selected").addClass("selected").fadeIn(length_in) ;
+  }) ;  
+
+  abortTimer() ;
+  timer_id = setInterval(cycleFeature, <?php echo $duration ; ?>);   
 } 
 
 var timer_id = "" ; 
