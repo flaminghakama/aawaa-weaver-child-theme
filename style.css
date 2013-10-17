@@ -2616,7 +2616,8 @@ div.feature_left_col {
    height: 330px ;  
 }
 div.excerpt { 
-   border: solid 0xp purple ; 
+   border: solid 0xp purple ;
+   padding: 40px 0px 12px 0px ;  
    float: right ; 
    width: 330px ; 
    height: 430px ; 
