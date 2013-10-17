@@ -60,7 +60,7 @@ function formatFeature($slide_count,$nav_selectors,$feature_url,$image_url,$titl
   $html .= "  <div class='feature_left_col'>\n" ; 
 
   $html .= $selectorL ; 
-  $html .= "    <div class='media'><a href='$feature_url'><img src='$image_url'></a></div for='media'>\n" ; 
+  $html .= "    <div class='media'><a href='$feature_url'><img height='330' width='440' src='$image_url'></a></div for='media'>\n" ; 
   $html .= $selectorR ; 
   $html .= "  </div for='feature_left_col'>\n" ;
   $html .= "  <div class='excerpt'>$excerpt</div for='excerpt'>\n" ; 
