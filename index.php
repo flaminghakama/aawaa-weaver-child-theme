@@ -27,44 +27,59 @@ weaverii_trace_template(__FILE__);
 <?php
 
 /*
+    Return formatted HTML of a selctor.
+    Specify a side, either R or L.
+*/
+function formatSelector($side) {
+ 
+  return "<div class='selector' id='selector_$side'><img src='" . get_stylesheet_directory_uri() . "/images/feature-nav/transparent.png'></div for='selector_$side'>" ;
+}
+
+/*
     Return formatted HTML of a feature.
     The feature includes a DIV structure.
 
     The ID of the enclosing div is based on the slide_count
-    If the nav_selectors is 'fake', then no feature nav is added.
-    Likewise, the class with either be 'actual' 
 
-    If the nav_selectors is 'fake', then no feature nav is added.
-    Otherwise, the nav_selectors is used as the content of the feature_nav.
+    If the nav_selectors is 'fake', then no selectors are added.
+    Likewise, the class with either be 'feature' or 'feature_fake' 
 */  
 function formatFeature($slide_count,$nav_selectors,$feature_url,$image_url,$title,$description,$excerpt) {
 
-  $class = 'fake' ; 
-  $nav = "<!-- no feature_nav -->\n" ; 
+  $class = 'feature_fake' ; 
+  $selectorL = "" ; 
+  $selectorR = "" ; 
   if ( $nav_selectors != "fake" ) {
-    $class = 'actual' ; 
-    $nav = "      <div class='feature_nav'>$nav_selectors</div for='feature_nav'>\n" ; 
+    $class = 'feature' ; 
+    $selectorL = formatSelector('L') ; 
+    $selectorR = formatSelector('R') ; 
   }
 
   $html = "" ; 
-  $html .= "<div id='slide_$slide_count' class='feature $class'>\n" ; 
+  $html .= "<div id='slide_$slide_count' class='$class'>\n" ; 
   $html .= "  <div class='feature_left_col'>\n" ; 
+
+  $html .= $selectorL ; 
   $html .= "    <div class='media'><a href='$feature_url'><img src='$image_url'></a></div for='media'>\n" ; 
-  $html .= "    <div class='bottom_left'>\n" ;
-  $html .= "      <div class='meta'><p class='title'><a href='$feature_url'>$title</a></p>\n<p class='description'>$description</p></div for='meta'>\n" ; 
-  $html .= $nav ; 
-  $html .= "    </div for='bottom_left'>\n" ;
+  $html .= $selectorR ; 
   $html .= "  </div for='feature_left_col'>\n" ;
   $html .= "  <div class='excerpt'>$excerpt</div for='excerpt'>\n" ; 
+  $html .= "  <div class='meta'><p class='title'><a href='$feature_url'>$title</a></p>\n<p class='description'>$description</p></div for='meta'>\n" ; 
 
   $html .= "</div for='slide_$slide_count'>\n" ;
 
   return $html ; 
 }
 
-function formatSelector($slide_count, $class) {
- 
-  return "<div class='selector $class' id='selector_$slide_count'><img src='" . get_stylesheet_directory_uri() . "/images/feature-nav/transparent.png'></div for='selector_$slide_count'>" ;
+/*
+    Return formatted JavaScript that will add a handler to the specified selector (R or L).
+*/
+function formatHandler($side) {
+
+  return "   \$(\"#selector_$side\").click( function(){ \n" . 
+         "       advanceSlide('$side') ;\n" .
+         "       abortTimer() ;\n" . 
+         "   }) ;\n" ; 
 }
 
   //  Query for pages with custom variable "Homepage Feature Order" sorted by that variable
@@ -85,10 +100,9 @@ function formatSelector($slide_count, $class) {
   $featured = array() ; 
   $slide_count = 0 ; 
   // collect the featured nav selectors
-  $selectors = "" ; 
   $reference_slides = "" ; 
   $next_slides = "" ; 
-  $next_selectors = "" ; 
+  $prev_slides = "" ; 
   $duration = 3000 ; 
 
   //                          
@@ -139,14 +153,12 @@ function formatSelector($slide_count, $class) {
     $featured[$slide_count] = $this_feature ;
 
     if ( $slide_count == 1 ) { 
-      $selectors .= formatSelector($slide_count, 'selected') ; 
       if ( $this_duration != "" ) { 
          $duration = $this_duration ; 
       }
     } else { 
-      $selectors .= formatSelector($slide_count, 'not_selected') ;
       $next_slides .= "next_slide['slide_$last_slide'] = 'slide_$slide_count' ;\n" ;  
-      $next_selectors .= "next_selector['slide_$last_slide'] = 'selector_$slide_count' ;\n" ;  
+      $prev_slides .= "prev_slide['slide_$slide_count'] = 'slide_$last_slide' ;\n" ;  
     }
 
     echo "<!-- adding to reference slide $slide_count -->\n" ; 
@@ -155,24 +167,24 @@ function formatSelector($slide_count, $class) {
   endforeach;
 
   $next_slides .= "next_slide['slide_$slide_count'] = 'slide_1' ;\n" ;  
-  $next_selectors .= "next_selector['slide_$slide_count'] = 'selector_1' ;\n" ;  
+  $prev_slides .= "prev_slide['slide_1'] = 'slide_$slide_count' ;\n" ;  
 
   $this_feature = $featured[1] ; 
-  echo formatFeature('visible',$selectors,$this_feature[feature_url],$this_feature[image_url],$this_feature[title],$this_feature[description],$this_feature[excerpt]) ; 
+  echo formatFeature('visible','real',$this_feature[feature_url],$this_feature[image_url],$this_feature[title],$this_feature[description],$this_feature[excerpt]) ; 
   echo $reference_slides ; 
 ?>
-
 
 <!-- Javascript to control homepage slidshow -->
 
 <script src="<?php echo get_stylesheet_directory_uri() ; ?>/js/jquery-1.6.1.js" type="text/javascript"></script>
 <script language="JavaScript">
 
+/*  Change the contents of the featured slide based on the specified reference slide ID.  */
 function updateFeature(selector_id) {
 
   selector = "#" + selector_id ; 
 
-  //alert('in updateFeature with slide ' + selector) ; 
+  //alert('in updateFeature with slide ' + selector_id) ; 
 
   var excerpt = $(selector + " div.excerpt").html() ; 
   var feature_url = $(selector + " div.media a").attr("href") ; 
@@ -184,57 +196,65 @@ function updateFeature(selector_id) {
 
   var length_out = 1200 ; 
   var length_in = 700 ; 
-  $("div.feature.actual div.excerpt").fadeOut(function() { length_out,
+  $("div.feature div.excerpt").fadeOut(function() { length_out,
     $(this).html(excerpt).fadeIn(length_in) ;
   }) ;  
-  $("div.feature.actual div.media img").fadeOut(function() {length_out,
+  $("div.feature div.media img").fadeOut(function() {length_out,
     $(this).attr({src: image_url}).fadeIn(length_in); 
   });
-  $("div.feature.actual div.meta p.title a").fadeOut(function() {length_out,
+  $("div.feature div.meta p.title a").fadeOut(function() {length_out,
     $(this).text(title).fadeIn(length_in); 
   });
 
-  $("div.feature.actual div.meta p.description").html(description) ;
-  $("div.feature.actual div.media a").prop("href", feature_url) ;
-  $("div.feature.actual div.meta p.title a").prop("href", feature_url) ;
+  $("div.feature div.meta p.description").html(description) ;
+  $("div.feature div.media a").prop("href", feature_url) ;
+  $("div.feature div.meta p.title a").prop("href", feature_url) ;
 
   abortTimer() ;
   timer_id = setInterval(cycleFeature, <?php echo $duration ; ?>); 
 }
 
-function updateNav(selector_id) {
+function flickerNav(side) {
 
+  var selector = '#selector_' + side ;  
+  //alert('in flickerNav with ' + selector) ; 
   var length_out = 6 ; 
   var length_in = 60 ; 
-  $("div.selector.selected").fadeOut(function() { length_out,
-    $(this).removeClass("selected not_selected").addClass("not_selected").fadeIn(length_in) ;
-  }) ;    
-  $("#" + selector_id).fadeOut(function() { length_out,
-    $(this).removeClass("selected not_selected").addClass("selected").fadeIn(length_in) ;
+  $(selector).fadeOut(function() { length_out,
+    $(selector).addClass("blink").removeClass("blink").fadeIn(length_in) ;
   }) ;  
-
-  abortTimer() ;
-  timer_id = setInterval(cycleFeature, <?php echo $duration ; ?>);   
 } 
 
-var timer_id = "" ; 
-var current_slide = "slide_1" ; 
+function showNextSlide() {
+  var slide_id = next_slide[current_slide] ; 
+  updateFeature(slide_id) ; 
+  flickerNav('R') ;   
+  current_slide = slide_id ; 
+}
 
-var next_slide = new Array(); 
-<?php echo $next_slides ; ?>
+function showPrevSlide() {
+  var slide_id = prev_slide[current_slide] ; 
+  updateFeature(slide_id) ; 
+  flickerNav('L') ; 
+  current_slide = slide_id ; 
+}
 
-var next_selector = new Array(); 
-<?php echo $next_selectors ; ?>
+function advanceSlide(direction) { 
+  if (direction == 'L') { 
+    showPrevSlide() ; 
+  } else { 
+    showNextSlide() ; 
+  }
+}
 
 function cycleFeature() { 
-  //  alert("in cycleFeature with current_slide " + current_slide) ; 
+
   //  Determine the next selector
   var slide_id = next_slide[current_slide] ; 
-  var selector_id = next_selector[current_slide] ; 
- 
+
   //  update the slide
   updateFeature(slide_id)  ; 
-  updateNav(selector_id) ; 
+  flickerNav('R') ; 
 
   current_slide = slide_id ; 
 }
@@ -243,24 +263,25 @@ function abortTimer() { // to be called when you want to stop the timer
   clearInterval(timer_id);
 }
 
+var timer_id = "" ; 
+var current_slide = "slide_1" ; 
+
+var next_slide = new Array(); 
+<?php echo $next_slides ; ?>
+
+var prev_slide = new Array(); 
+<?php echo $prev_slides ; ?>
+
 $( document ).ready(function() {
+
+  //alert('In document ready') ; 
+
 <?php 
-  foreach ($featured as $slide_count=>$f):  
-
-    echo "\n// slide_count $slide_count \n" ; 
-
-    $handler = "   \$(\"#selector_$slide_count\").click( function(){ \n" . 
-               "       updateFeature('slide_" . $slide_count . "') ;\n" .
-               "       updateNav('selector_" . $slide_count . "') ;\n" . 
-               "       abortTimer() ;\n" . 
-               "   }) ;\n" ; 
-
-    echo $handler ; 
-
-  endforeach; 
+  echo formatHandler('L') ; 
+  echo formatHandler('R') ; 
 ?>
 
-timer_id = setInterval(cycleFeature, <?php echo $duration ; ?>); 
+  timer_id = setInterval(cycleFeature, <?php echo $duration ; ?>); 
 }) ; 
 </script>
 
