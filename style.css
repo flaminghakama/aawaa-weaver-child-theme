@@ -1293,12 +1293,15 @@ h3.widget-title {
 #sidebar_wrap_left ul.a { 
   margin: 0 0 0 38px ; 
 }
-#sidebar_wrap_left ul.a > li { 
-  margin: 18px 70px 12px 0 ;
-  padding: 0 0 2px 0 ; 
+#sidebar_wrap_left .wp_widget_plugin_box {
+  margin-bottom: 230px ; 
+}
+#sidebar_wrap_left .wp_widget_plugin_box > ul > li { 
+  margin: 22px 12px 12px 0 ;
+  padding: 0 0 22px 0 ; 
   border-bottom: solid 1px #ffffff ; 
 }
-#sidebar_wrap_left ul.b li { 
+#sidebar_wrap_left ul li ul li { 
   margin: 10px 18px 0 0 ; 
 }
 #sidebar_wrap_left { 
@@ -2664,7 +2667,7 @@ div.meta p.description {
   display: none ; 
 }
 div.selector { 
-  border: solid 0px brown ; 
+  border: solid 1px brown ; 
   position: absolute ; 
   height: 32px ; 
   background-image:url('images/feature-nav/indicator-sprite-LR.png') ; 
