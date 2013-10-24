@@ -26,22 +26,6 @@ weaverii_get_header('page');
 if (weaverii_getopt('wii_infobar_location') == 'top') get_template_part('infobar');
 weaverii_inject_area('premain'); ?>
 
-<!-- BEGIN added sidebar directly in page.php 
-
-
-	<div id="sidebar_wrap_left" class="left-1-col equal_height">
-
-
-          <div id="sidebar_primary" class="widget-area weaver-clear" role="complementary">
-
-
-
-          </div for="sidebar_primary">
-
-        </div for="sidebar_wrap_left">
-
-<!-- END added sidebar directly in page.php -->
-
 <?php 
 
 echo("\t<div id=\"main\">\n");
