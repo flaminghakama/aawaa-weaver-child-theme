@@ -2722,6 +2722,25 @@ div.feature div.selector {
 }
 
 
+
+div.events-excerpt { 
+  overflow:hidden;
+}
+div.events-excerpt div { 
+  max-width: 600px ;
+  display: block-inline ;
+  float: left  ;  
+  margin-left: 12px ; 
+  text-align: left ; 
+}
+
+#content .events-excerpt img { 
+  display: block-inline ; 
+  float: left ;
+  margin: 0px 12px 24px 12px ; 
+}
+
+
 @media all { /* =RSS Feed, Calendar
 ----------------- */
 .widget_tag_cloud div {
