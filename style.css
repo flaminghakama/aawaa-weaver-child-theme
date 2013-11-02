@@ -2696,6 +2696,7 @@ div.selector {
   height: 32px ; 
   background-image:url('images/feature-nav/indicator-sprite-LR.png') ; 
   background-repeat:no-repeat;
+  cursor: pointer;
 }
 #selector_L { 
   top: 170px ; 
