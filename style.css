@@ -1290,6 +1290,9 @@ h3.widget-title {
 	text-decoration:none;
 }
 
+#sidebar_primary ul li a { 
+  font-size: 110% ; 
+}
 #sidebar_wrap_left ul.a { 
   margin: 0 0 0 38px ; 
 }
@@ -1301,13 +1304,34 @@ h3.widget-title {
   padding: 0 0 22px 0 ; 
   border-bottom: solid 1px #ffffff ; 
 }
+#sidebar_wrap_left ul a {
+  display: inline-block ;  
+  padding-left: 24px ; 
+}
+#sidebar_wrap_left ul li ul { 
+  margin-top: 18px ; 
+}
 #sidebar_wrap_left ul li ul li { 
   margin: 10px 18px 0 0 ; 
+}
+#sidebar_wrap_left ul li ul li a { 
+  font-size: 90% ; 
 }
 #sidebar_wrap_left { 
   line-height: 1.320 ; 
 }
+#sidebar_wrap_left ul li.current > a { 
+   color: #7C6A55 ; 
+}
+#sidebar_wrap_left ul li ul li.current > a { 
+   color: #7C6A55 ; 
+}
 
+#sidebar_wrap_left ul li.current { 
+  background-image:url('images/page-secondary-nav/indicator-sprite.png') ; 
+  background-repeat:no-repeat;
+  background-position:0px 0px ;
+}
 #per-page-widget {
     overflow:hidden;
 }
@@ -2672,6 +2696,7 @@ div.selector {
   height: 32px ; 
   background-image:url('images/feature-nav/indicator-sprite-LR.png') ; 
   background-repeat:no-repeat;
+  cursor: pointer;
 }
 #selector_L { 
   top: 170px ; 
@@ -2694,6 +2719,25 @@ div.feature div.selector {
 }
 .feature_fake {
   display: none ; 
+}
+
+
+
+div.events-excerpt { 
+  overflow:hidden;
+}
+div.events-excerpt div { 
+  max-width: 600px ;
+  display: block-inline ;
+  float: left  ;  
+  margin-left: 12px ; 
+  text-align: left ; 
+}
+
+#content .events-excerpt img { 
+  display: block-inline ; 
+  float: left ;
+  margin: 0px 12px 24px 12px ; 
 }
 
 
@@ -2975,6 +3019,8 @@ textarea {
   line-height: 1.5em;
 }
 
+
+
 div#container_wrap.container-search #content {
   max-width: 680px;
   margin-left: auto ;
@@ -2997,10 +3043,6 @@ div#container_wrap.container-search .entry-meta-icons .entry-date {
 div#container_wrap.container-search #content a.more-link {
   padding: 5px 0 0 0 ; 
 }
-
-
-
-
 
 
 /* Thin brown border line * /
@@ -3033,4 +3075,3 @@ aawaa-logo.png
 /* AAWAA Catalyst slogan * /
 aawaa-header-slogan.png
 */
-
