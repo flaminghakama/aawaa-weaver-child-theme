@@ -63,7 +63,15 @@ div.div-right { text-align: right; margin-bottom: 10px; }
 tr.error-row { text-align: center; padding: .4em; }
 tr.error-row div.error-msg { margin-left: auto; margin-right: auto; width: auto; }
 
-input[type=text], input[type=password], textarea { border: 1px solid #dddddd; background-color: #aaaaaa; padding: 4px; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; }
+input[type=text], input[type=password], textarea { 
+   color: #971B1E ; 
+   border: 1px solid #C9C1B8; 
+   background-color: #C9C1B8; 
+   padding: 4px; 
+   border-radius: 4px; 
+   -moz-border-radius: 4px; 
+   -webkit-border-radius: 4px; 
+}
 
 input[type=image], input[type=hidden] { border: 0; }
 
@@ -159,11 +167,13 @@ a.formbutton:link, a.formbutton:visited, a.formbutton:active { color: #422; }
 a.formbutton:hover { color: #666666; }
 
 /* default link colors assuming dark background */
+/*
 a { text-decoration: none; color: #fef7ca; }
 a:link { color: #fef7ca; }
 a:visited { color: #fef7ca; }
 a:hover { color: #554444; }
 a:active { color: #fef7ca; }
+*/
 
 /* for medium tag cloud matches */
 .tagmatch a:link { color: #cc77cc; }
@@ -428,7 +438,7 @@ margin: 0 0 20px 0;
 
 footer.credits { padding: 14px 0; margin-bottom: 20px; }
 
-#container { background-color: #738294; margin: auto; padding: 5px; position: relative; width: 900px; }
+/* #container { background-color: #738294; margin: auto; padding: 5px; position: relative; width: 900px; } */
 
 .lkmap { font-size: 10px; }
 
@@ -1345,3 +1355,12 @@ a.button b.m b { display: block; font-weight: bold; padding: 4px 8px; text-shado
 #social_panel .social_buttons { text-align: right; float: right; }
 #social_panel .social_buttons .facebook { margin-top: 4px; }
 #social_panel .social_buttons .pinterest { margin-top: 6px; }
+
+#content tr td {
+   border: 1px solid transparent ; 
+}
+
+td.input-name {
+  white-space:nowrap;
+}
+
