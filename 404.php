@@ -20,18 +20,19 @@ weaverii_get_sidebar_left('404');	// mimic search
 			<article id="post-0" class="post error404 not-found">
 
 				<header class="entry-header">
-					<h1 class="entry-title"><?php echo __( 'Sorry, no such page.','weaver-ii'); ?></h1>
+					<h1 class="entry-title"><?php echo __( 'Sorry, we could not find  your page','weaver-ii'); ?></h1>
 				</header>
 
 <?php
 	if (!weaverii_getopt('_wii_hide_not_found_search')) {
 ?>
 				<div class="entry-content cf">
-					<p><?php echo __( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching, or one of the links below, can help.','weaver-ii'); ?></p>
+					<p><?php echo __( 'If you typed in an address, please check your link, or try searching.','weaver-ii'); ?></p>
 
 					<?php get_search_form();
 					if (weaverii_use_mobile('mobile')) echo '<div class="wvr-clear-block">&nbsp;</div>';
 					?>
+<!--
 
 					<?php the_widget( 'WP_Widget_Recent_Posts', array( 'number' => 10 ), array( 'widget_id' => '404' ) );
 					if (weaverii_use_mobile('mobile')) echo '<div class="wvr-clear-block"&nbsp;</div>';
@@ -53,7 +54,7 @@ weaverii_get_sidebar_left('404');	// mimic search
 					?>
 
 					<?php the_widget( 'WP_Widget_Tag_Cloud' ); ?>
-
+-->
 				</div><!-- .entry-content -->
 <?php
 	}	// don't show not found message

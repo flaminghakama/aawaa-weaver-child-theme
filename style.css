@@ -975,6 +975,15 @@ p img,
 	box-shadow: none !important;
 }
 
+.content-single .entry-meta { 
+    display: none ; 
+}
+
+.content-single .entry-utility { 
+    display: none ; 
+}
+
+
 /* --widget */
 
 .widget img,
@@ -2259,7 +2268,8 @@ article.format-status .entry-content {
 	display:block;
 }
 .single #nav-above {
-	display:block;
+    /* display:block; */
+    display: none ; 
 }
 .nav-previous {
 	float:left;
@@ -3021,7 +3031,8 @@ textarea {
 
 
 
-div#container_wrap.container-search #content {
+div#container_wrap.container-search #content, 
+div#container_wrap.container-404 #content {
   max-width: 680px;
   margin-left: auto ;
   margin-right: auto ;
