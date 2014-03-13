@@ -2256,7 +2256,7 @@ article.format-status .entry-content {
 	padding:0 0 .5em;
 	z-index:1;
 }
-#nav-above {
+#nav-above, #nav-below {
 	display:none;
 }
 #nav-below {

@@ -27,7 +27,7 @@ weaverii_get_sidebar_left('404');	// mimic search
 	if (!weaverii_getopt('_wii_hide_not_found_search')) {
 ?>
 				<div class="entry-content cf">
-					<p><?php echo __( 'If you typed in an address, please check your link, or try searching.','weaver-ii'); ?></p>
+					<p><?php echo __( 'If you typed in an address, please check your link.  Or, try searching.','weaver-ii'); ?></p>
 
 					<?php get_search_form();
 					if (weaverii_use_mobile('mobile')) echo '<div class="wvr-clear-block">&nbsp;</div>';

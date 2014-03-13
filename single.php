@@ -15,13 +15,13 @@ echo("\t<div id=\"main\">\n");
 weaverii_trace_template(__FILE__);
 global $weaverii_cur_post_id;
 $weaverii_cur_post_id = get_the_ID();
-weaverii_get_sidebar_left('single');
+// weaverii_get_sidebar_left('single');
 ?>
 		<div id="container_wrap"<?php weaverii_get_page_class('single', 'container-single'); ?>>
 <?php		if (weaverii_getopt('wii_infobar_location') == 'content') get_template_part('infobar');
 		weaverii_inject_area('precontent'); ?>
 		<div id="container">
-<?php		weaverii_get_sidebar_top('single'); ?>
+ <?php		weaverii_get_sidebar_top('single'); ?>
 			<div id="content" role="main">
 
 <?php 		weaverii_post_count_clear();
@@ -68,6 +68,6 @@ weaverii_get_sidebar_left('single');
 		</div><!-- #container -->
 		</div><!-- #container_wrap -->
 
-<?php	weaverii_get_sidebar_right('single');
+<?php	// weaverii_get_sidebar_right('single');
 	weaverii_get_footer('single'); ?>
 <!-- END  single.php  -->
