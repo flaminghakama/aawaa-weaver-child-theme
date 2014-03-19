@@ -1,10 +1,15 @@
 /*
 Theme Name: Weaver II AAWAA
+<<<<<<< HEAD
 Theme URI: http://aawaanet/cayalyst/wp-content/themes/weaver-ii-aawaa
 Description: Bare minimum Weaver II Child demo theme
+=======
+Theme URI: http://aawaa.net/cayalyst/wp-content/themes/weaver-ii-aawaa
+Description: Child theme of Weaver II for AAWAA
+>>>>>>> a6ef24a0b246618bf17487d5a32a82ae616a3d34
 Author: David Elaine Alt
 Author URI: http://flaminghakama.com
-Version: 0.1
+Version: 0.9
 Tags: custom-header, custom-colors, custom-background, custom-menu, theme-options, left-sidebar, right-sidebar, fixed-width, three-columns, two-columns, black, blue, brown, green, orange, red, tan, dark, white, light
 Template: weaver-ii
 */
@@ -234,9 +239,10 @@ img,
 /* -- Plugin Helpers */
 
 span.absolute-add-search { 
-   position: absolute;  
-    top: 110px;  
-    right: 20px;    
+    position: absolute;  
+    top: 9px;  
+    right: 20px;
+    z-index: 300 ;
 }
 
 
@@ -993,7 +999,7 @@ p img,
 }
 
 #sidebar_header .header-widget img {
-	width:30%;
+	/* width:30%; */
 }	/* need this for Firefox... */
 
 
@@ -1022,9 +1028,12 @@ p img,
 
 #sidebar_header {
     display: block-inline ; 
-	clear: none;
-	margin:0;
-	padding:0;
+    clear: none;
+    margin: 0px 40px 24px 600px ;
+    padding:0;
+    position: absolute ;
+    bottom: 0px;  
+    right: 0px;
 }
 #sidebar_header table, #sidebar_header tr, #sidebar_header th, #sidebar_header td {
 	margin:0;
@@ -1036,7 +1045,7 @@ p img,
 }
 #sidebar_header table {
 	/* max-width:700px ;  */
-        margin: 20px 40px 20px 0px ; 
+        /* margin: 20px 40px 20px 0px ; */
 }
 
 #header_widget_table { 
@@ -1049,11 +1058,10 @@ ul.header-toolbar {
   text-transform: uppercase ; 
 }
 ul.header-toolbar li { 
-  margin: 1em 0.4em 1em 0.4em ; 
+  margin: 0em 0.4em 0em 0.4em ; 
   list-style: none ; 
   display: inline ; 
   float: both ; 
-  vertical-align: top ; 
 }
 ul.header-toolbar li a { 
   color: #7C6A55 ; 
@@ -1219,7 +1227,6 @@ ins {
 }
 #site-description {
 	font-size:90%;
-        height: 67px ;
 }
 .widget-area {
 	font-size:120%;
@@ -1357,30 +1364,29 @@ h3.widget-title {
 }
 } /* archives */
 
-@media all { /* =Search
------------------------------------------------ */
+@media all { /* =Search ----------------------------------------------- */
 
-/* Search Widget */
-.widget_search #s {
-	width:80%;
-}
-
-input#s {
-	color:#444 !important;
-	background:#F0F0F0 !important;
-	font-size:80% !important;
-}
-.menu-add-search {margin-top:5px; padding-right:2px !important;display:inline-block;}
-#infobar_search {margin-top:1px; padding-right:10px !important;display:inline-block;}
-
-
-.widget_search label {
-	display:none;
-}
-.searchformimg {
-	background: transparent;
-	margin-bottom:-5px;
-}
+    /* Search Widget */
+    .widget_search #s {
+    	width:80%;
+    }
+    
+    input#s {
+    	color:#444 !important;
+    	background:#F0F0F0 !important;
+    	font-size:80% !important;
+    }
+    .menu-add-search {margin-top:5px; padding-right:2px !important;display:inline-block;}
+    #infobar_search {margin-top:1px; padding-right:10px !important;display:inline-block;}
+    
+    
+    .widget_search label {
+    	display:none;
+    }
+    .searchformimg {
+    	background: transparent;
+    	margin-bottom:-7px;
+    }
 } /* search */
 
 @media all { /* =Posts
@@ -1462,17 +1468,20 @@ input#s {
 #branding {
         border: solid 0px purple ; 
         overflow:auto; 
-        background: url(images/graphics/aawaa-header-logo-left.png) ;
+        background: transparent ; 
         background-repeat: no-repeat ; 
-	position:relative;
-	z-index:2;
+	position: relative ; 
 }
 .title-description {
 	border: 0px solid green;
-	float: left ;
-	width: 560px ;
+	float: none ;
+	width: 603px ;
+	max-height: 26px ;
 }
 .wvr_gadget,
+#branding .branding { 
+  float: left ; 
+}
 #branding img,
 #branding a img {
 	border:0;
@@ -1481,6 +1490,11 @@ input#s {
 	height:auto;
 	max-width:100%;
 	padding:0;
+        margin: 0px 2px 0px 4px ; 
+}
+
+#branding #site-logo a img {
+        margin: 0px 12px 24px 39px ; 
 }
 
 #branding .weaver-social img,	/* make images horizontal */
@@ -1491,12 +1505,11 @@ input#s {
 }
 
 h1#site-title {
-    font-size: 110% ; 
+    font-size: 134% ; 
 }
 #site-title {
         text-transform: uppercase ; 
-	/* font-size:85%; */
-	margin: 0.75em 1% 0.25em 240px;
+	margin: 0.5em 1% 0.15em 218px;
 }
 #site-title a {
 	color:#000;
@@ -1511,7 +1524,7 @@ h1#site-title {
 	/* font-weight:200; */
         text-transform: uppercase ; 
 	/* font-style:italic; */
-	margin: 0.25em 1% 0.75em 240px;
+	margin: 0.1em 1% 0.75em 218px;
 }
 
 #header-extra-html {
@@ -1628,11 +1641,10 @@ h1#site-title {
 
 .weaveriip_vertical_menu .menu_bar li {
 	float:left;
-	position:relative;
 }
 
 .weaveriip_vertical_menu .menu_bar ul ul a {
-	padding:10px 10px;
+	padding: 10px 10px 10px 10px;
 }
 
 .weaveriip_vertical_menu .menu_pop_right .menu_bar li,
@@ -1649,6 +1661,9 @@ h1#site-title {
 	min-height:38px;	/*@ matches menubar height */
 	text-transform: uppercase ; 
 }
+#nav-bottom-menu {
+        position: relative ; 
+}
 .menu_bar div {
 	margin:0 22px;		/*@ margin from left/right */
 }
@@ -1664,7 +1679,6 @@ h1#site-title {
 }
 .menu_bar ul {
 	list-style:none !important;
-	margin:0 0 0 -10px;
 	padding-left:0;
 }
 
@@ -2847,11 +2861,9 @@ div.events-excerpt div {
 	}
 	#site-title,
 	#site-description {
-		position:relative !important;
-		float:none;
 		line-height:1.5em;
-		margin:0 !important;
-		padding:0 !important;
+		margin:0 ; 
+		padding:0 ; 
 	}
 
 	.menu_bar,
