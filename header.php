@@ -104,16 +104,6 @@ weaverii_setup_mobile();
 
 <body <?php body_class(); ?>>
 
-<!-- Added Search -->
-<span class="absolute-add-search">
-<form role="search" style="background:transparent;" method="get" class="searchform" action="<?php get_site_url() ; ?>" >
-	<label class="screen-reader-text" for="s">Search for:</label>
-	<input type="search" value="" name="s" id="s" placeholder="Search Site" />
-	<input class="searchformimg" type="image" src="<?php echo get_template_directory_uri() ; ?>/images/search_button.gif" alt="Search" />
-	</form></span>
-<!-- END Added Search -->
-
-
 <a href="#page-bottom" id="page-top">&darr;</a> <!-- add custom CSS to use this page-bottom link -->
 <?php
     weaverii_trace_template(__FILE__);
@@ -133,16 +123,12 @@ weaverii_setup_mobile();
 	    get_template_part('nav','top');
 ?>
 	<header id="branding" role="banner">
+           <div class="branding">
 
 <?php
 	    /* ======== SITE LOGO and TITLE ======== */
 	    $title = (weaverii_getopt('_wii_mobile_site_title') && weaverii_use_mobile('mobile') )
 		? esc_html(weaverii_getopt('_wii_mobile_site_title')) : esc_attr( get_bloginfo( 'name', 'display' ) );
-?>
-<!--	    <div id="site-logo"><a href='<?php echo home_url( '/' ); ?>'><img src="<?php bloginfo('stylesheet_directory'); ?>/images/graphics/aawaa-header-logo.png" width="191" height="103"></a></div> -->
-	    <div id="site-logo-link" onclick="location.href='';"></div>
-
-<?php
 	    $h_class = ' class="title-description"';
 	    if ( weaverii_getopt('wii_hide_site_title') || weaverii_is_checked_page_opt('ttw-hide-site-title') ) {
 		if (!weaverii_use_mobile('mobile') || weaverii_getopt('wii_hide_site_title_mobile')) {
@@ -170,6 +156,8 @@ weaverii_setup_mobile();
 ?>
 	    </hgroup>
 
+	    <div id="site-logo"><a href='<?php echo home_url( '/' ); ?>'><img src="<?php echo dirname( get_bloginfo('stylesheet_url') ) ; ?>/images/graphics/aawaa-logo-tagline-header.png" alt="Asian American Women Artists Association" width="552" height="46"></a></div>
+         </div>
 <?php
 	    if (weaverii_getopt('wii_top_menu_before_header') && !weaverii_getopt('wii_top_menu_before_wrapper'))
 		get_template_part('nav','top');
@@ -196,7 +184,7 @@ weaverii_setup_mobile();
 		if ( !weaverii_getopt_checked('wii_hide_header_image')
 		    && !(weaverii_getopt('wii_hide_header_image_front') && is_front_page() ) ) {
 
-		    echo("\t\t<div id=\"header_image\">\n");
+		    echo("<!-- \t\t<div id=\"header_image\"> -->\n");
 		    if (weaverii_getopt('wii_link_site_image')) {
 ?>
 		    <a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
@@ -234,7 +222,7 @@ weaverii_setup_mobile();
                         <!-- <img src="<?php echo $hdr ?>" width="<?php echo $weaverii_header['width']; ?>" height="<?php echo  $weaverii_header['height']; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" /> -->
 			<!-- <img src="<?php echo $hdr ?>" width="800" height="12" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" /> -->
 <?php			    } else {
-				echo '<div class="weaver-clear"></div>'; // needs a clear if not an img
+				echo '<!-- <div class="weaver-clear"></div> -->'; // needs a clear if not an img
 			    }
 			}
 		    }
