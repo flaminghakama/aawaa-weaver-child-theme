@@ -1304,6 +1304,7 @@ h3.widget-title {
 
 #sidebar_primary ul li a { 
   font-size: 110% ; 
+  color: #7C6A55 ; 
 }
 #sidebar_wrap_left ul.a { 
   margin: 0 0 0 38px ; 
@@ -1319,6 +1320,7 @@ h3.widget-title {
 #sidebar_wrap_left ul a {
   display: inline-block ;  
   padding-left: 24px ; 
+  min-width: 150px ; 
 }
 #sidebar_wrap_left ul li ul { 
   margin-top: 18px ; 
@@ -1328,15 +1330,16 @@ h3.widget-title {
 }
 #sidebar_wrap_left ul li ul li a { 
   font-size: 90% ; 
+  min-width: 120px ; 
 }
 #sidebar_wrap_left { 
   line-height: 1.320 ; 
 }
 #sidebar_wrap_left ul li.current > a { 
-   color: #7C6A55 ; 
+   color: #971B1E ; 
 }
 #sidebar_wrap_left ul li ul li.current > a { 
-   color: #7C6A55 ; 
+   color: #971B1E ; 
 }
 
 #sidebar_wrap_left ul li.current { 
