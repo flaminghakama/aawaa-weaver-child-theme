@@ -15,13 +15,10 @@
 	&& !weaverii_is_checked_page_opt('ttw-hide-menus');
 
 if ($show_menu) {
-
     if (!weaverii_getopt('wii_move_menu')) { 	/* ttw - move menu */
 	weaverii_mobile_menu_bar('mobile-bottom-nav','nav-bottom-menu');
 ?>
-		<div id="nav-bottom-menu"<?php echo $nav_class;?>>
-                <?php include('search-bar.php'); ?>
-<nav id="access" class="menu_bar" role="navigation">
+		<div id="nav-bottom-menu"<?php echo $nav_class;?>><nav id="access" class="menu_bar" role="navigation">
 		<div class="skip-link"><a class="assistive-text" href="#content" title="<?php esc_attr( __('Skip to primary content','weaver-ii')); ?>"><?php echo __( 'Skip to primary content','weaver-ii'); ?></a></div>
 			<div class="skip-link"><a class="assistive-text" href="#primary" title="<?php esc_attr( __('Skip to secondary content','weaver-ii')); ?>"><?php echo __( 'Skip to secondary content','weaver-ii'); ?></a></div>
 <?php           /* add html to menu left */
