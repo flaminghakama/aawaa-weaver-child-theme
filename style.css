@@ -1,12 +1,7 @@
 /*
 Theme Name: Weaver II AAWAA
-<<<<<<< HEAD
-Theme URI: http://aawaanet/cayalyst/wp-content/themes/weaver-ii-aawaa
-Description: Bare minimum Weaver II Child demo theme
-=======
 Theme URI: http://aawaa.net/cayalyst/wp-content/themes/weaver-ii-aawaa
 Description: Child theme of Weaver II for AAWAA
->>>>>>> a6ef24a0b246618bf17487d5a32a82ae616a3d34
 Author: David Elaine Alt
 Author URI: http://flaminghakama.com
 Version: 0.9
@@ -487,7 +482,7 @@ h1,h2,
 }
 h3,h4,h5,h6 {
 	clear:both;
-	margin:0 0 1.6em 0;
+	margin:0 0 .7em 0;
 }
 .weaver-feed .entry-header h2,
 #content .weaver-feed .entry-header h2 {
@@ -1061,7 +1056,8 @@ ul.header-toolbar li {
   margin: 0em 0.4em 0em 0.4em ; 
   list-style: none ; 
   display: inline ; 
-  float: both ; 
+  float: both ;
+  white-space: nowrap ;  
 }
 ul.header-toolbar li a { 
   color: #7C6A55 ; 
@@ -1913,11 +1909,6 @@ li.sfHover > a > .sf-sub-indicator {
 	padding:10px 0 10px 0;
 }
 
-#content .post {
-	margin-bottom:4px;
-	padding: 0px 0 10px 0;
-}
-
 #content .gallery-thumb {
 	margin-bottom:25px;
 }
@@ -2275,7 +2266,7 @@ article.format-status .entry-content {
 	padding:0 0 .5em;
 	z-index:1;
 }
-#nav-above, #nav-below {
+#nav-above {
 	display:none;
 }
 #nav-below {
