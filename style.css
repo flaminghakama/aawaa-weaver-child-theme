@@ -4,7 +4,7 @@ Theme URI: http://aawaa.net/cayalyst/wp-content/themes/weaver-ii-aawaa
 Description: Child theme of Weaver II for AAWAA
 Author: David Elaine Alt
 Author URI: http://flaminghakama.com
-Version: 0.9
+Version: 1.0
 Tags: custom-header, custom-colors, custom-background, custom-menu, theme-options, left-sidebar, right-sidebar, fixed-width, three-columns, two-columns, black, blue, brown, green, orange, red, tan, dark, white, light
 Template: weaver-ii
 */
@@ -1057,11 +1057,11 @@ ul.header-toolbar li {
   list-style: none ; 
   display: inline ; 
   float: both ;
-  white-space: nowrap ;  
 }
 ul.header-toolbar li a { 
   color: #7C6A55 ; 
   font-size: 1.0em ; 
+  white-space: nowrap ;  
 }
 ul.header-toolbar li p { 
   margin: 0 ; 
