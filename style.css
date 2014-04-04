@@ -1313,9 +1313,9 @@ h3.widget-title {
   margin-bottom: 230px ; 
 }
 #sidebar_wrap_left .wp_widget_plugin_box > ul > li { 
-  margin: 22px 12px 12px 0 ;
-  padding: 0 0 22px 0 ; 
-  border-bottom: solid 1px #ffffff ; 
+  margin: 18px 12px 12px 0 ;
+  padding: 0 0 18px 0 ; 
+  border-bottom: solid 0px #ffffff ; 
 }
 #sidebar_wrap_left ul a {
   display: inline-block ;  
@@ -2969,7 +2969,7 @@ div.events-excerpt div {
 
 /* needed to make Preview and first activation of theme to work right */
 body {background:#E3D5A7;}
-#wrapper {background:#FFFFF0;}
+#wrapper {background:transparent;}
 #branding {background-color:#FFDEAD;}
 #colophon {background-color:#FFDEAD;}
 #sidebar_primary,.mobile_widget_area {background-color:#F5F5DC;}
