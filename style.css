@@ -3106,3 +3106,16 @@ aawaa-logo.png
 /* AAWAA Catalyst slogan * /
 aawaa-header-slogan.png
 */
+
+/* Artist Profile */
+#artist-profile #profile-featured-image {
+  width: 280px ; 
+  max-width: 280px ; 
+  height: 280px ; 
+  max-height: 280px ; 
+}
+
+#artist-profile .short {
+  float: left ; 
+}
+

@@ -41,7 +41,6 @@ $weaverii_cur_post_id = get_the_ID();
 <?php			    }
 ?>
 			    </nav><!-- #nav-above -->
-
 <?php 			    get_template_part( 'content', 'single-artist-profile' ); ?>
 
 			    <nav id="nav-below" class="navigation">
@@ -57,8 +56,6 @@ $weaverii_cur_post_id = get_the_ID();
 <?php			    }
 ?>
 			    </nav><!-- #nav-above -->
-
-
 <?php 			    comments_template( '', true ); ?>
 
 <?php 		} // end of the loop. ?>
