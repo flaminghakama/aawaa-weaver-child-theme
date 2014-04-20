@@ -41,7 +41,7 @@ weaverii_per_post_style();
 
     /*  Display the feature image profile picture */
     echo "    <div id='profile-featured-image'>" ; 
-    the_post_thumbnail( $size, $attr );
+    the_post_thumbnail( 'artist-profile-picture' );
     echo "    </div>\n" ; 
 
     /*  Display the short-format fields  */
@@ -50,19 +50,21 @@ weaverii_per_post_style();
     echo "        <div class='website'>" . $values['artist_website'] . "</div>\n" ;
     echo "        <div class='email'>" . $values['published_email'] . "</div>\n" ;
     echo "        <div class='social-media-profiles'>" . $values['social-media-profiles'] . "</div>\n" ;
-    echo "    </div class='short'>\n" ; 
-
+    echo "    </div class='short'>\n" ;
+ 
+    echo "    <div class='long-container'>\n" ; 
     /*  Display the long-format fields  */
     function format_long_field($field) { 
         return 
-            "    <div class='long'>\n" +
-            "        <h3>" . $labels[$field] . "</h3>\n" +
-            "        <div>" . $values[$field] . "</div>\n" ;
-            "    </div class='long'>\n" ; 
+            "        <div class='long'>\n" +
+            "            <h3>" . $labels[$field] . "</h3>\n" +
+            "            <div>" . $values[$field] . "</div>\n" ;
+            "        </div class='long'>\n" ; 
      }
     echo format_long_field('artist_statement') ; 
     echo format_long_field('artist_bio') ; 
     echo format_long_field('artist_cv') ;     
+    echo "    </div class='long-container'>\n" ; 
 ?>
 </div id="artist-profile">
 <!-- END  content-single-artist-profile.php  -->

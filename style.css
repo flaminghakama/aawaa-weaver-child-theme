@@ -3110,12 +3110,28 @@ aawaa-header-slogan.png
 /* Artist Profile */
 #artist-profile #profile-featured-image {
   width: 280px ; 
-  max-width: 280px ; 
+  //max-width: 280px ; 
   height: 280px ; 
-  max-height: 280px ; 
+  //max-height: 280px ; 
+}
+
+#artist-profile {
+  color: #7c756f ; 
+}
+
+#artist-profile h3,
+#artist-profile div.short div {
+  color: #762e46 ; 
 }
 
 #artist-profile .short {
   float: left ; 
 }
+
+#artist-profile #gallery .thumbnail {
+  border: 1px solid #C8C1BB ; 
+  width: 229px ; 
+  height: 256px ; 
+}
+
 
