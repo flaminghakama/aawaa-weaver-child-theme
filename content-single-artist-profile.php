@@ -40,10 +40,13 @@ weaverii_per_post_style();
     }
 
     /*  Display the feature image profile picture */
-    echo "<!-- wp_get_attachment_image_src: " ; $image = wp_get_attachment_image_src( get_post_thumbnail_id( the_ID() ), 'artist-profile-picture' ); echo "-->\n" ; 
+    echo "<!-- wp_get_attachment_image_src: " ; $image = wp_get_attachment_image_src( get_post_thumbnail_id( $art ), 'artist-profile-picture' ); echo "-->\n" ; 
+    $imgSrc = $image[0] ; 
+    $dimensions = ( $image[1] >= $image[2] ) ? "width='100%'" : "height='100%'" ;  
+    //echo var_dump($image) ; 
 
-    echo "    <div id='profile-featured-image'>" ; 
-    echo "        <img width='100%' height='100%' src='$image' class='attachment-artist-profile-picture wp-post-image' alt='" . $values['first_name'] . " " . $values['last_name'] . "'>\n" ; 
+    echo "    <div id='profile-featured-image'>\n" ; 
+    echo "        <img $dimensions src='$imgSrc' class='attachment-artist-profile-picture wp-post-image' alt='" . $values['first_name'] . " " . $values['last_name'] . "'>\n" ; 
     echo "    </div>\n" ; 
 
     /*  Display the short-format fields */  
