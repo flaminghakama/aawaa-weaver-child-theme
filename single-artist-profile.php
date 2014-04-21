@@ -1,4 +1,4 @@
-<!-- BEGIN  single-artist-profile.php  -->
+<!-- BEGIN single-artist-profile.php  -->
 <?php
 /**
  * The Template for displaying all single posts.
@@ -41,8 +41,7 @@ $weaverii_cur_post_id = get_the_ID();
 <?php			    }
 ?>
 			    </nav><!-- #nav-above -->
-
-<?php 			    get_template_part( 'content', 'artist-profile' ); ?>
+<?php 			    get_template_part( 'content', 'single-artist-profile' ); ?>
 
 			    <nav id="nav-below" class="navigation">
 				<h3 class="assistive-text"><?php echo __( 'Post navigation','weaver-ii'); ?></h3>
@@ -57,8 +56,6 @@ $weaverii_cur_post_id = get_the_ID();
 <?php			    }
 ?>
 			    </nav><!-- #nav-above -->
-
-
 <?php 			    comments_template( '', true ); ?>
 
 <?php 		} // end of the loop. ?>
@@ -70,4 +67,4 @@ $weaverii_cur_post_id = get_the_ID();
 
 <?php	// weaverii_get_sidebar_right('single');
 	weaverii_get_footer('single'); ?>
-<!-- END  single-artist-profile.php  -->
+<!-- END single-artist-profile.php  -->

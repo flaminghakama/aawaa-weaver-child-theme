@@ -1,7 +1,11 @@
-<!-- BEGIN  content-artist-profile.php  -->
+<!-- BEGIN content-artist-profile.php  -->
 <?php
 /**
- * The template for displaying content in the single-artist-profile.php template
+ * The default template for displaying content on blog pages
+ *
+ * This will display unmatched post-type blog posts from main blog page and archive-type pages
+ * Note - if you are building a custom content-xxx.php page for a custom post type, you should
+ * be sure that Feature Images are processed correctly via weaverii_the_contnt_featured().
  *
  * @package WordPress
  * @subpackage Weaver II
@@ -11,47 +15,71 @@ weaverii_trace_template(__FILE__);
 global $weaverii_cur_post_id;
 $weaverii_cur_post_id = get_the_ID();
 weaverii_per_post_style();
-?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('content-single ' . weaverii_post_count_class(true)); ?>>
-	<header class="entry-header">
+
+if (weaverii_is_checked_page_opt('wvr_pwp_compact_posts')
+     && !is_archive()
+     && !is_search()
+     && ($the_image = weaverii_get_first_post_image()) != ''
+	) {
+?>
+	<article id="post-<?php the_ID(); ?>" <?php post_class('content-default content-compact-post ' . weaverii_post_count_class() ); ?>>
+		<header class="entry-header">
+			<hgroup class="entry-hdr"><h2 class="entry-title">
+			<a href="<?php esc_url(the_permalink()); ?>" title="<?php printf( esc_attr(__( 'Permalink to %s','weaver-ii')),
+	   the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a>
+			</h2></hgroup>
+		</header><!-- .entry-header -->
+		<div class="entry-compact"> <!-- Compact Post -->
+		<a href="<?php esc_url(the_permalink()); ?>" title="<?php printf( esc_attr(__( 'Permalink to %s','weaver-ii')),
+	   the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+		<?php echo $the_image; ?>
+		</a>
+		</div><!-- .entry-compact -->
+
 <?php
-		weaverii_post_title('<hgroup class="entry-hdr"><h1 class="entry-title">', "</h1></hgroup>\n", 'single');
+} else {
+?>
+	<article id="post-<?php the_ID(); ?>" <?php post_class('content-default ' . weaverii_post_count_class() ); ?>>
+		<header class="entry-header">
+<?php 		if (is_sticky() ) {
+			weaverii_entry_header('');
+		} else {
+			weaverii_post_title('<hgroup class="entry-hdr"><h2 class="entry-title">', "</h2></hgroup>\n");
+		}
 
 		if ( 'page' != get_post_type() ) { ?>
-		<div class="entry-meta">
-			<?php weaverii_post_top_info('single'); ?>
-		</div><!-- .entry-meta -->
-		<?php } ?>
-	</header><!-- .entry-header -->
+			<div class="entry-meta">
+				<?php weaverii_post_top_info(); ?>
+			</div><!-- .entry-meta -->
+<?php 		}
+		weaverii_comments_popup_link(); ?>
+		</header><!-- .entry-header -->
 
-	<div class="entry-content cf">
-		<?php weaverii_the_contnt_featured_single(); ?>
-		<?php wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:','weaver-ii') . '</span>', 'after' => '</div>' ) ); ?>
-	</div><!-- .entry-content -->
-
-	<footer class="entry-utility">
-<?php
-		weaverii_post_bottom_info('single');
-
-		if ( get_the_author_meta( 'description' ) && !weaverii_getopt('wii_hide_author_bio')) { // If a user has filled out their description, show a bio on their entries ?>
-		<div id="author-info">
-			<div id="author-avatar">
-				<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'weaverii_author_bio_avatar_size', 68 ) ); ?>
-			</div><!-- #author-avatar -->
-			<div id="author-description">
-				<h2><?php printf( esc_attr__( 'About %s','weaver-ii'), get_the_author() ); ?></h2>
-				<?php the_author_meta( 'description' ); ?>
-				<div id="author-link">
-					<a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author">
-						<?php printf( __( 'View all posts by %s <span class="meta-nav">&rarr;</span>','weaver-ii'), get_the_author() ); ?>
-					</a>
-				</div><!-- #author-link	-->
-			</div><!-- #author-description -->
-		</div><!-- #entry-author-info -->
+<?php		if (weaverii_show_only_title()) {
+			echo("\t</article><!-- #post -->\n");
+			return;
+		}
+		if (weaverii_do_excerpt()) { // Only display Excerpts for Search ?>
+		<div class="entry-summary"> <!-- EXCERPT -->
+<?php 			weaverii_the_excerpt_featured(); ?>
+		</div><!-- .entry-summary -->
+<?php 		} else { ?>
+		<div class="entry-content cf">
+<?php 			weaverii_the_contnt_featured();
+ 			wp_link_pages( array( 'before' => '<div class="page-link"><span>' . __( 'Pages:','weaver-ii') . '</span>', 'after' => '</div>' ) ); ?>
+		</div><!-- .entry-content -->
 <?php 		} ?>
 
-	</footer><!-- .entry-utility -->
-<?php		    weaverii_inject_area('postpostcontent');	// inject post comment body ?>
-</article><!-- #post-<?php the_ID(); ?> -->
-<!-- END  content-artist-profile.php  -->
+		<footer class="entry-utility">
+<?php
+		weaverii_post_bottom_info();
+		weaverii_compact_link('check');
+?>
+		</footer><!-- #entry-utility -->
+<?php
+		weaverii_inject_area('postpostcontent');	// inject post comment body
+} // regular post
+?>
+	</article><!-- #post-<?php the_ID(); ?> -->
+<!-- END content-artist-profile.php  -->
