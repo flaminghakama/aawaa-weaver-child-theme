@@ -50,9 +50,62 @@ require('gallery-lib.php') ;
     echo "        <img $dimensions src='$imgSrc' class='attachment-artist-profile-picture wp-post-image' alt='" . $values['first_name'] . " " . $values['last_name'] . "'>\n" ; 
     echo "    </div>\n" ; 
 
+
+    function _concatTerm($list, $delimiter, $name) { 
+        return ( $list ) ? $list . $delimiter . $name : $name ; 
+    }
+
+    /*  Get the taxonomy terms  */
+    $locations = wp_get_object_terms($weaverii_cur_post_id, 'artist-profile-location');
+    //var_dump($locations) ; 
+    if(!empty($locations)){
+        if(!is_wp_error( $locations )){
+            foreach($locations as $term){
+                $values['location'] = _concatTerm( $values['location'], " and ", $term->name) ; 
+            }
+        }
+    }
+
+    $ethnicities = wp_get_object_terms($weaverii_cur_post_id, 'artist-profile-ethnicity');
+    if(!empty($ethnicities)){
+        if(!is_wp_error( $ethnicities )){
+            foreach($ethnicities as $term){
+                $values['ethnicity'] = _concatTerm( $values['ethnicity'], ', ', $term->name) ; 
+            }
+        }
+    }
+
+    $disciplines = wp_get_object_terms($weaverii_cur_post_id, 'artist-profile-discipline');
+    if(!empty($disciplines)){
+        if(!is_wp_error( $disciplines )){
+            foreach($disciplines as $term){
+                $values['discipline'] = _concatTerm( $values['discipline'], ', ', $term->name) ; 
+            }
+        }
+    }
+
+    function format_tag($name, $taxonomy) { 
+        return "            <div class='tag $taxonomy'>$name</div>\n" ; 
+    }
+
+    $mediums = wp_get_object_terms($weaverii_cur_post_id, 'artist-profile-medium');
+    if(!empty($mediums)){
+        if(!is_wp_error( $mediums )){
+            foreach($mediums as $term){
+                $values['media'] = _concatTerm( $values['media'], ', ', $term->name) ; 
+                $values['mediums'][] = format_tag($term->name) ;
+            }
+        }
+    }
+
+
     /*  Display the short-format fields */  
     echo "    <div class='short'>\n" ; 
     echo "        <h2>" . $values['first_name'] . " " . $values['last_name'] . "</h2>\n" ;
+    echo "        <div class='discipline'>" . $values['discipline'] . "</div>\n" ;
+    echo "        <div class=''>" . $values['media'] . "</div>\n" ;
+    echo "        <div class='location'>" . $values['location'] . "</div>\n" ;
+    echo "        <div class='ethnicity'>" . $values['ethnicity'] . "</div>\n" ;
     echo "        <div class='website'>" . $values['artist_website'] . "</div>\n" ;
     echo "        <div class='email'>" . $values['published_email'] . "</div>\n" ;
     echo "        <div class='social-media-profiles'>" . $values['social-media-profiles'] . "</div>\n" ;

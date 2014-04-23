@@ -3110,8 +3110,7 @@ aawaa-header-slogan.png
 /* Artist Profile */
 #artist-profile,
 #work-of-art {
-  color: #a29b94 ; 
-  color: #7c756f ; 
+  color: #7C6A55 ; 
   line-height: 1.6 ; 
   margin: 30px 0px 30px 0px ; 
 }
@@ -3134,13 +3133,13 @@ aawaa-header-slogan.png
 }
 
 #artist-profile h2, 
-#artist-profile h3,
+#content #artist-profile h3,
 #artist-profile div.short div,
 #content #artist-profile h2, 
 #content #work-of-art h2, 
 #work-of-art h3,
 #work-of-art div.short div {
-  color: #9a1d47 ; 
+  color: #990033 ; 
 }
 
 #artist-profile .short {
@@ -3151,7 +3150,7 @@ aawaa-header-slogan.png
 #artist-profile h2,
 #work-of-art h2 { 
   font-weight: normal ; 
-  font-size: 170% ; 
+  font-size: 160% ; 
 }
 
 #artist-profile h2 {
@@ -3163,9 +3162,9 @@ aawaa-header-slogan.png
 }
 
 #artist-profile .short div {
-  margin: 12px 12px 12px 0px ; 
+  margin: 1px 12px 1px 0px ; 
   font-weight: normal ; 
-  font-size: 108% ; 
+  font-size: 98% ; 
 }
 
 #work-of-art .short div { 
