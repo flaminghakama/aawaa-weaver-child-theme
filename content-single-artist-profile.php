@@ -93,7 +93,7 @@ require('gallery-lib.php') ;
         if(!is_wp_error( $mediums )){
             foreach($mediums as $term){
                 $values['media'] = _concatTerm( $values['media'], ', ', $term->name) ; 
-                $values['mediums'][] = format_tag($term->name) ;
+                $values['mediums'][] = format_tag($term->name, 'medium') ;
             }
         }
     }

@@ -16,7 +16,7 @@
 function imageDimensions($image, $target_width, $target_height) { 
     $image_width = $image[1] ; 
     $image_height = $image[2] ; 
-    $image_ratio = $image_width / $image_height ; 
+    $image_ratio = ( $image_height > 0 ) ? $image_width / $image_height : $image_width ; 
     $target_ratio = $target_width / $target_height ; 
     $compare = $image_ratio / $target_ratio ; 
     $relative = 'height=100%' ; 
