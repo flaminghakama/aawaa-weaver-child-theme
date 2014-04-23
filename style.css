@@ -3129,9 +3129,14 @@ aawaa-header-slogan.png
   height: 100% ; 
 }
 
+#content #artist-profile img.wp-post-image {
+  background-color: #990033; 
+}
+
 #artist-profile h2, 
 #artist-profile h3,
 #artist-profile div.short div,
+#content #artist-profile h2, 
 #content #work-of-art h2, 
 #work-of-art h3,
 #work-of-art div.short div {
@@ -3145,9 +3150,16 @@ aawaa-header-slogan.png
 
 #artist-profile h2,
 #work-of-art h2 { 
-  margin: 0px 12px 0px 0px ; 
   font-weight: normal ; 
   font-size: 170% ; 
+}
+
+#artist-profile h2 {
+  margin: 0px 12px 0px 0px ; 
+}
+
+#work-of-art h2 { 
+  margin: 16px 12px 0px 0px ; 
 }
 
 #artist-profile .short div {
@@ -3162,9 +3174,11 @@ aawaa-header-slogan.png
   font-size: 108% ; 
 }
 
-#artist-profile .long-container { 
+#artist-profile .long-container, 
+#artwork-gallery { 
   clear: both ;
   max-width: 764px ;
+  margin: 32px 0 0 0 ; 
 }
 
 #artist-profile .long h3 { 
@@ -3179,8 +3193,39 @@ aawaa-header-slogan.png
   height: 256px ; 
 }
 
-.single-artist-profile #nav-below { 
+.single-artist-profile #nav-below,
+.single-work-of-art #nav-below { 
   display: none ; 
+}
+
+
+#artwork-gallery {
+  background-image:url('images/profiles/gallery-hr-bg.png') ; 
+  background-repeat: repeat ;
+}
+
+#artwork-gallery ul {
+  margin: 0 ; 
+  padding: 0 ; 
+}
+
+#artwork-gallery li {
+  list-style-type: none;
+  display: inline-block;
+  float: none;
+  clear: both;
+}
+
+#artwork-gallery .work-of-art {
+  padding: 0px ; 
+}
+
+#artwork-gallery a img {
+  border: solid 1px #a29b94 ;
+}
+
+#artwork-gallery a {
+  overflow:hidden; 
 }
 
 
@@ -3194,6 +3239,3 @@ aawaa-header-slogan.png
 #work-of-art .short { 
   clear: both ;
 }
-
-
-

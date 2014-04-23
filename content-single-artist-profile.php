@@ -11,6 +11,7 @@ weaverii_trace_template(__FILE__);
 global $weaverii_cur_post_id;
 $weaverii_cur_post_id = get_the_ID();
 weaverii_per_post_style();
+require('gallery-lib.php') ; 
 ?>
 
 <div id="artist-profile"><!-- ID: <?php the_ID(); ?> -->
@@ -70,6 +71,14 @@ weaverii_per_post_style();
     format_long_field($labels['artist_bio'], $values['artist_bio']) ; 
     format_long_field($labels['artist_cv'], $values['artist_cv']) ; 
     echo "    </div class='long-container'>\n" ; 
+
+ 
+    /*  Get the author of this post  */
+    $author = get_the_author();
+    //echo "<p>author is $author</p>\n"; 
+    $author_ID = $post->post_author;
+    //echo "<p>author_ID is $author_ID</p>\n"; 
+    format_gallery($wpdb, $author_ID) ; 
 ?>
 </div id="artist-profile">
 <!-- END  content-single-artist-profile.php  -->
