@@ -21,7 +21,7 @@ require('gallery-lib.php') ;
     $altText = $art_title ; 
 
     /*  For some reason, these calls echo the post ID, so we wrap it in HTML comments */
-    echo "<!-- get_field_objects: " ; $fields = get_field_objects($key, $art) ; echo "-->\n" ; 
+    $fields = get_field_objects($key, $art) ; 
 
     /*  Get all the lables and values we need to display the data */
     $values = array () ;
@@ -41,11 +41,9 @@ require('gallery-lib.php') ;
 
     /*  Display the work of art */
     echo "<!-- wp_get_attachment_image_src: " ; $image = wp_get_attachment_image_src( get_post_thumbnail_id( $art ), 'work-of-art' ); echo "-->\n" ; 
+    $geo = imageDimensions($image, 858, 642) ; 
     $imgSrc = $image[0] ; 
-    $imgWidth = $image[1] ; 
-    $imgHeight = $image[2] ; 
-    $dimensions = ( $imgWidth > $imgHeight ) ? "width='858'" : "height='642'" ;  
-    //echo var_dump($image) ; 
+    $dimensions = $geo['dimensions'] ; 
 
     echo "    <div id='featured-image'>\n" ; 
     echo "        <img $dimensions src='$imgSrc' class='attachment-work-of-art-picture wp-post-image' alt='$altText'>\n" ; 

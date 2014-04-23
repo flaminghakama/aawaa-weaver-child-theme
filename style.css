@@ -3214,6 +3214,7 @@ aawaa-header-slogan.png
   display: inline-block;
   float: none;
   clear: both;
+  margin-bottom: 18px ; 
 }
 
 #artwork-gallery .work-of-art {
@@ -3232,8 +3233,7 @@ aawaa-header-slogan.png
 #work-of-art #featured-image {
   width: 858px ; 
   height: 642px ; 
-  background: #990033 ; 
-  padding: 0px 0px 48px 0px ;  
+  margin: 0px 0px 0px 0px ;  
 }
 
 #work-of-art .short { 

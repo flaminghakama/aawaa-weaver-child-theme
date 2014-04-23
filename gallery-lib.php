@@ -27,12 +27,12 @@ function imageDimensions($image, $target_width, $target_height) {
     if ( $compare > 1 ) {  
 	echo "<!-- compare=$compare: width $image_width is the max dimension (height is $image_height)-->\n" ; 
         $relative = 'width=100%' ; 
-        $height = number_format($target_height / $image_ratio, 0);
+        $height = number_format($target_width / $image_ratio, 0);
         $space = $target_height - $height ; 
-        $padding = "margin-bottom:$space" . "px" ; 
+        //$padding = "margin-bottom:$space" . "px" ; 
     } else {  
 	echo "<!-- compare=$compare: height $image_height is the max dimension (width is $image_width)-->\n" ; 
-        $width = number_format($target_width * $image_ratio, 0);
+        $width = number_format($target_height * $image_ratio, 0);
         $space = $target_width - $width ; 
         $half_space = number_format($space / 2, 0) ; 
         $padding = "margin-right:$half_space" . "px;margin-left:$half_space" . "px" ; 
