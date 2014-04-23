@@ -19,11 +19,9 @@ require('gallery-lib.php') ;
     $art = get_the_ID() ; 
     $art_title = get_the_title() ;
     $altText = $art_title ; 
-echo "<!-- debug 1 -->\n" ; 
 
-    /*  For some reason, these calls echo the post ID, so we wrap it in HTML comments */
+    /*  For some reason, these calls echo the post ID and/or throw errors, so we wrap it in HTML comments */
     echo "<!-- " ; $fields = get_field_objects($key, $art) ; echo "-->\n" ; 
-echo "<!-- debug 2 -->\n" ; 
 
     /*  Get all the lables and values we need to display the data */
     $values = array () ;

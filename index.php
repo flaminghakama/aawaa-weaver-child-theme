@@ -19,6 +19,7 @@ weaverii_inject_area('premain');
 echo("\t<div id=\"main\">\n");
 weaverii_trace_template(__FILE__);
 //weaverii_get_sidebar_left('index');
+//require('gallery-lib.php') ; 
 ?>
 		<div id="container_wrap" class="homepage_slideshow">
 
