@@ -17,31 +17,12 @@ require('gallery-lib.php') ;
 <div id="artist-profile"><!-- ID: <?php the_ID(); ?> -->
 <?php
 
-    /*  For some reason, this call echoes the post ID, so we wrap it in HTML comments */
-    echo "<!-- get_field_objects: " ; $fields = get_field_objects($key, the_ID()) ; echo "-->\n" ; 
-
-    /*  Get all the lables and values we need to display the data */
-    $values = array () ;
-    $labels = array () ;
-    $profile_fields = array (
-        0 => 'first_name',
-	1 => 'last_name',
-	2 => 'artist_website',
-	3 => 'published_email',
-	4 => 'social_media_profiles',
-	5 => 'artist_statement',
-	6 => 'artist_bio',
-	7 => 'artist_cv'
-     ) ; 
-
-    foreach ($profile_fields as $count => $key) {
-        $values[$key] = get_field($key); 
-        $field = $fields[$key] ; 
-        $labels[$key] = $field['label'] ;            
-    }
-
+    $profile_data = get_profile_data($weaverii_cur_post_id) ; 
+    $values = $profile_data['values'] ; 
+    $labels = $profile_data['labels'] ; 
+ 
     /*  Display the feature image profile picture */
-    echo "<!-- wp_get_attachment_image_src: " ; $image = wp_get_attachment_image_src( get_post_thumbnail_id( $art ), 'artist-profile-picture' ); echo "-->\n" ; 
+    echo "<!-- wp_get_attachment_image_src: " ; $image = wp_get_attachment_image_src( get_post_thumbnail_id( $weaverii_cur_post_id ), 'artist-profile-picture' ); echo "-->\n" ; 
     $imgSrc = $image[0] ; 
     $dimensions = ( $image[1] >= $image[2] ) ? "width='100%'" : "height='100%'" ;  
     //echo var_dump($image) ; 

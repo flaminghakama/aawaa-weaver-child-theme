@@ -3138,7 +3138,10 @@ aawaa-header-slogan.png
 #content #artist-profile h2, 
 #content #work-of-art h2, 
 #work-of-art h3,
-#work-of-art div.short div {
+#work-of-art div.short div,
+#artist-profile-search-results h2, 
+#content #artist-profile-search-results h2, 
+#content #artist-profile-search-results h3 {
   color: #990033 ; 
 }
 
@@ -3238,3 +3241,20 @@ aawaa-header-slogan.png
 #work-of-art .short { 
   clear: both ;
 }
+
+
+
+#profile-gallery .artist-profile { 
+  width: 167px ; 
+  height: 186 px;
+  margin: 0px 15px 31px 0px ; 
+  padding: 0px 10px 10px 10px ; 
+  border: 1px solid #dddddd ; 
+}
+
+#profile-gallery .profile-thumbnail {
+  width: 146px ; 
+  height: 146px ; 
+  text-align: center;
+}
+

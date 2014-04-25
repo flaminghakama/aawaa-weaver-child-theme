@@ -1,5 +1,41 @@
 <?php
 
+/*
+ * get_profile_data -- get the custom field data for an artist profile
+ * @param integer post_ID The WordPress post ID
+ * @returns an array of two arrays: values and labels
+ */
+function get_profile_data($post_ID) {
+
+    /*  For some reason, this call echoes the post ID, so we wrap it in HTML comments */
+    echo "<!-- get_field_objects: " ; $fields = get_field_objects($key, the_ID()) ; echo "-->\n" ; 
+
+    /*  Get all the lables and values we need to display the data */
+    $values = array () ;
+    $labels = array () ;
+    $profile_fields = array (
+        0 => 'first_name',
+	1 => 'last_name',
+	2 => 'artist_website',
+	3 => 'published_email',
+	4 => 'social_media_profiles',
+	5 => 'artist_statement',
+	6 => 'artist_bio',
+	7 => 'artist_cv'
+     ) ; 
+
+    foreach ($profile_fields as $count => $key) {
+        $values[$key] = get_field($key); 
+        $field = $fields[$key] ; 
+        $labels[$key] = $field['label'] ;            
+    }
+
+    return array ( 
+        'values' => $values, 
+	'labels' => $labels
+    ) ; 
+}
+
 /*  
  *  imageDimensions -- Determine the optimal display dimensions of an image, 
  *      based on the specified target dimensions.
@@ -45,6 +81,17 @@ function imageDimensions($image, $target_width, $target_height) {
         'height' => $height,
 	'padding' => $padding
     ) ;   	    	       
+}
+
+/*  Create a thumbnail for an artist profile, linked to its post  */
+function format_profile_thumbnail($permalink, $image, $first_name, $last_name) { 
+    $imgSrc = $image[0] ; 
+    $geo = imageDimensions($image, 146, 146) ; 
+    //$dimensions = $geo['relative'] ; 
+    $dimensions = $geo['dimensions'] ; 
+    $margins = "style='" . $geo['padding'] . "'" ; 
+    $name = "$first_name $last_name" ; 
+    echo "            <li $margins><div class='artist-profile'><div class="profile-thumbnail"><a href='$permalink'><img src='$imgSrc' $dimensions alt='$name'>$name</a></div></div></li>\n" ;  
 }
 
 /*  Create a thumbnail for a work of art, linked to its post  */
