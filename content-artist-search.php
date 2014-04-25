@@ -1,6 +1,6 @@
 <!-- BEGIN  content-artist-search.php  -->
 <?php
-/**
+/*
  * The template part that displays a work of art
  * typically called from the single-work-of-art.php template
  *
@@ -37,7 +37,7 @@ require('gallery-lib.php') ;
             ON p.ID = tr.object_id
         WHERE tt.taxonomy IN ('location', 'media', 'artistic-discipline', 'ethnicity')
         AND p.post_type = 'artist-profile'
-        ORDER BY t.name ASC;";
+        ORDER BY t.name ASC";
     
     $profile_posts = $wpdb->get_results($profile_query);
     global $post; 

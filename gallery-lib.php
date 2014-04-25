@@ -91,7 +91,7 @@ function format_profile_thumbnail($permalink, $image, $first_name, $last_name) {
     $dimensions = $geo['dimensions'] ; 
     $margins = "style='" . $geo['padding'] . "'" ; 
     $name = "$first_name $last_name" ; 
-    echo "            <li $margins><div class='artist-profile'><div class="profile-thumbnail"><a href='$permalink'><img src='$imgSrc' $dimensions alt='$name'>$name</a></div></div></li>\n" ;  
+    echo "            <li $margins><div class='artist-profile'><div class='profile-thumbnail'><a href='$permalink'><img src='$imgSrc' $dimensions alt='$name'>$name</a></div></div></li>\n" ;  
 }
 
 /*  Create a thumbnail for a work of art, linked to its post  */
