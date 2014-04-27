@@ -27,12 +27,8 @@ weaverii_get_sidebar_left('page');
 
 		    <div id="content" role="main">
 <?php 			while ( have_posts() ) {
-                            echo "<!-- debug 0 -->\n" ; 
 			    weaverii_post_count_clear(); the_post();
-                            echo "<!-- debug 1 -->\n" ; 
 			    get_template_part( 'content', 'artist-search' );
-                            echo "<!-- debug 2 -->\n" ; 
-
 			    comments_template( '', true );
 			}
 ?>
