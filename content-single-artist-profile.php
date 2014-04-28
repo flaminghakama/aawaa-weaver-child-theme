@@ -91,17 +91,16 @@ require('gallery-lib.php') ;
     format_long_field($labels['artist_cv'], $values['artist_cv']) ; 
     echo "            </div class='long-container'>\n" ; 
 
-    echo "        </div class='artist-profile-fields'>\n" ; 
-    echo "    </div class='colleft'>\n" ; 
-    echo "</div class='artist-profile-columns'>\n" ; 
-
- 
-    /*  Get the author of this post  */
+     /*  Get the author of this post  */
     $author = get_the_author();
     //echo "<p>author is $author</p>\n"; 
     $author_ID = $post->post_author;
     //echo "<p>author_ID is $author_ID</p>\n"; 
     format_gallery($wpdb, $author_ID) ; 
+
+    echo "        </div class='artist-profile-fields'>\n" ; 
+    echo "    </div class='colleft'>\n" ; 
+    echo "</div class='artist-profile-columns'>\n" ; 
 ?>
 </div id="artist-profile">
 <!-- END  content-single-artist-profile.php  -->

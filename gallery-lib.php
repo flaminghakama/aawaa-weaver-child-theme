@@ -177,7 +177,7 @@ function get_artist_terms($post_ID, $taxonomies, $delimiters) {
                     //echo "<p>var_dump of term: " ;  var_dump($term) ; echo "</p>\n" ; 
 		    //echo "<p>term->name is " . $term->name . "</p>\n" ;
                     $values[$key] = _concatTerm( $values[$key], $term->name, $delimiters[$key]) ; 
-                    $tags[$key][] = _formatTag( $values[$key], $key) ; 
+                    $tags[$key][] = _formatTag( $term->name, $key) ; 
 		    //echo "<p>values[$key]: <b>" . $values[$key] . "</b></p>\n" ; 
 		    //echo "<p>tags[$key]: <b>" . $tags[$key] . "</b></p>\n" ; 
                 }
