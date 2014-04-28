@@ -65,7 +65,7 @@ function imageDimensions($image, $target_width, $target_height) {
         $relative = 'width=100%' ; 
         $height = number_format($target_width / $image_ratio, 0);
         $space = $target_height - $height ; 
-        //$padding = "margin-bottom:$space" . "px" ; 
+        $padding = "margin-top:$space" . "px" ; 
     } else {  
 	echo "<!-- compare=$compare: height $image_height is the max dimension (width is $image_width)-->\n" ; 
         $width = number_format($target_height * $image_ratio, 0);
