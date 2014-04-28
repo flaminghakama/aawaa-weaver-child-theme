@@ -1,4 +1,4 @@
-<!-- BEGIN  content-affiliate-search.php  -->
+<!-- BEGIN  content-member-search.php  -->
 <?php
 /*
  * The template part that displays a work of art
@@ -17,7 +17,7 @@ require('gallery-lib.php') ;
 <div id="profile-gallery">
 <?php
  
-    format_profile_gallery($wpdb, array('affiliate-profile')) ;   
+    format_profile_gallery($wpdb, array('artist-profile', 'affiliate-profile')) ;   
 ?>
 </div id="profile-gallery">
-<!-- END  content-affiliate-search.php  -->
+<!-- END  content-member-search.php  -->

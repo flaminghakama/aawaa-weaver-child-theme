@@ -3294,7 +3294,8 @@ div.tag span {
 }
 
 #profile-gallery p {
-  margin: 0 0 10px 0 ; 
+  margin: 0 0 10px 0 ;
+  white-space: nowrap ;  
 }
 
 #profile-gallery a {

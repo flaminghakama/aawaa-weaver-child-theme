@@ -199,26 +199,18 @@ function get_artist_terms($post_ID, $taxonomies, $delimiters) {
  */
 function format_long_field($label, $value) { 
     echo
-        "            <div class='long'>\n" .
-        "                <h3>$label</h3>\n" .
-        "                <div>$value</div>\n" .
-        "            </div class='long'>\n" ; 
+        "                <div class='long'>\n" .
+        "                    <h3>$label</h3>\n" .
+        "                    <div>$value</div>\n" .
+        "                </div class='long'>\n" ; 
 }
 
 /*
- *  Get the gallery of profile thumbnails of either artists or affiliates.
- *  @param string post_type Either 'artist-profile' or 'affiliate-profile'
+ *  Format the gallery of profile thumbnails of the supplied profile posts
+ *  @param array profile_posts The list of artist and/or affiliate profile posts to format
  */
-function format_profile_gallery($wpdb, $post_type) { 
+function format_profile_posts($profile_posts) { 
 
-    $profile_query = "
-        SELECT $wpdb->posts.* 
-        FROM $wpdb->posts 
-        WHERE $wpdb->posts.post_type = '$post_type'
-        AND $wpdb->posts.post_status = 'publish' 
-    " ; 
-
-    $profile_posts = $wpdb->get_results($profile_query);
     global $post; 
     
     echo "        <ul>\n" ; 
@@ -239,4 +231,28 @@ function format_profile_gallery($wpdb, $post_type) {
     echo "    </div>\n" ; 
     echo "<!-- debug 4 -->\n" ; 
 }
+
+/*
+ *  Get the gallery of profile thumbnails of either artists or affiliates.
+ *  @param string post_type Either 'artist-profile' or 'affiliate-profile'
+ */
+function format_profile_gallery($wpdb, $post_types) { 
+
+    $profile_posts = array() ; 
+
+    foreach ($post_types as $post_type) { 
+        $profile_query = "
+            SELECT $wpdb->posts.* 
+            FROM $wpdb->posts 
+            WHERE $wpdb->posts.post_type = '$post_type'
+            AND $wpdb->posts.post_status = 'publish' 
+        " ; 
+
+        $profile_posts = array_merge($profile_posts, $wpdb->get_results($profile_query)) ; 
+    }
+ 
+    format_profile_posts($profile_posts) ; 
+}
+
+
 ?>

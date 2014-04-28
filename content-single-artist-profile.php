@@ -80,13 +80,6 @@ require('gallery-lib.php') ;
 
     /*  Display the long-format fields  */
     echo "        <div class='long-container'>\n" ; 
-    function format_long_field($label, $value) { 
-        echo
-            "            <div class='long'>\n" .
-            "                <h3>$label</h3>\n" .
-            "                <div>$value</div>\n" .
-            "            </div class='long'>\n" ; 
-     }
     format_long_field($labels['artist_statement'], $values['artist_statement']) ; 
     format_long_field($labels['artist_bio'], $values['artist_bio']) ; 
     format_long_field($labels['artist_cv'], $values['artist_cv']) ; 

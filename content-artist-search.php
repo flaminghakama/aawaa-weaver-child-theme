@@ -39,9 +39,7 @@ require('gallery-lib.php') ;
         AND p.post_type = 'artist-profile'
         ORDER BY t.name ASC";
 
-    echo "<!-- debug 01 -->\n" ; 
-    format_profile_gallery($wpdb, 'artist-profile') ;   
-    echo "<!-- debug 02 -->\n" ; 
+    format_profile_gallery($wpdb, array('artist-profile')) ;   
 ?>
 </div id="profile-gallery">
 <!-- END  content-artist-search.php  -->
