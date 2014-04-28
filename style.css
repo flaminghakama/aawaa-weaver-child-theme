@@ -3124,15 +3124,19 @@ aawaa-header-slogan.png
   max-width: 70% ; 
 }
 
-.tag { 
+div.tag {
+  display: block; 
   float: both ; 
+  margin: 4px 12px 16px 0px;
+}
+
+div.tag span {
   background-color: #ffffff;
   border: 1px solid #7C6A55;
   font-weight: bold;
   color: #7C6A55;
   padding: 5px 8px 5px 8px;
-  margin: 8px 12px 8px 0px;
-  font-size: 90% ; 
+  font-size: 90% ;
 }
 
 #artist-profile #profile-featured-image {

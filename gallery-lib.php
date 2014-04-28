@@ -150,7 +150,7 @@ function _concatTerm($list, $name, $delimiter) {
 
 /*  Construct a div for the tag name, classed by taxonomy.  */
 function _formatTag($name, $taxonomy) { 
-    return "            <div class='tag $taxonomy'>$name</div>\n" ; 
+    return "            <div class='tag $taxonomy'><span>$name</span></div>\n" ; 
 }
 
 /*  Get the taxonomy terms  
