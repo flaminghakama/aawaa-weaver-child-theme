@@ -17,7 +17,7 @@ global $weaverii_cur_post_id;
 $weaverii_cur_post_id = get_the_ID();
 // weaverii_get_sidebar_left('single');
 ?>
-		<div id="container_wrap"<?php weaverii_get_page_class('single', 'container-single'); ?>>
+<div id="artist-profile-container">
 <?php		if (weaverii_getopt('wii_infobar_location') == 'content') get_template_part('infobar');
 		weaverii_inject_area('precontent'); ?>
 		<div id="container">
@@ -63,7 +63,8 @@ $weaverii_cur_post_id = get_the_ID();
 			</div><!-- #content -->
 <?php		weaverii_get_sidebar_bottom('single'); ?>
 		</div><!-- #container -->
-		</div><!-- #container_wrap -->
+</div><!-- #artist-profile-container -->
+
 
 <?php	// weaverii_get_sidebar_right('single');
 	weaverii_get_footer('single'); ?>

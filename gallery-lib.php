@@ -136,4 +136,59 @@ function format_gallery($wpdb, $author_ID) {
     echo "        </ul>\n" ; 
     echo "    </div>\n" ; 
 }
+
+
+/*  Get the tags that appear as a left column  
+    as well as in the short list info at the top of the profile  */
+function _concatTerm($list, $name, $delimiter) { 
+    //echo "<!-- concat $name into list: $list, with delimiter $delimiter -->" ; 
+    if ( $list ) { 
+      return $list . $delimiter . $name ; 
+    } 
+    return $name ; 
+}
+
+/*  Construct a div for the tag name, classed by taxonomy.  */
+function _formatTag($name, $taxonomy) { 
+    return "            <div class='tag $taxonomy'>$name</div>\n" ; 
+}
+
+/*  Get the taxonomy terms  
+ *  @param number post_ID The artist profile WordPress post ID
+ *  @param array taxonomies The names of taxonomies from which to get terms 
+ *  @param array delimiters The string used to concatenate multiple tags into a single text string
+ *  @return array of two arrarys: values and tags.
+ *      Each array contains elements for the specified taxonomies.
+ *      The values of the values array are text copy
+ *      The values of the tags array are arrays of formatted DIV tags 
+ */
+function get_artist_terms($post_ID, $taxonomies, $delimiters) { 
+
+    $values = array() ; 
+    $tags = array() ; 
+
+    foreach ($taxonomies as $key => $taxonomy) {
+        echo "<!-- Key: $key, Taxonomy: $taxonomy-->\n";
+        $term_data = wp_get_object_terms($post_ID, $taxonomy);
+        //echo "<p>var_dump of term_data: " ;  var_dump($term_data) ; echo "</p>\n" ; 
+        if(!empty($term_data)){
+            if(!is_wp_error( $term_data )){
+                foreach($term_data as $term){
+                    //echo "<p>var_dump of term: " ;  var_dump($term) ; echo "</p>\n" ; 
+		    //echo "<p>term->name is " . $term->name . "</p>\n" ;
+                    $values[$key] = _concatTerm( $values[$key], $term->name, $delimiters[$key]) ; 
+                    $tags[$key][] = _formatTag( $values[$key], $key) ; 
+		    //echo "<p>values[$key]: <b>" . $values[$key] . "</b></p>\n" ; 
+		    //echo "<p>tags[$key]: <b>" . $tags[$key] . "</b></p>\n" ; 
+                }
+            }
+        }
+    }
+
+    return array(
+        'values' => $values, 
+	'tags' => $tags
+    );
+}
+
 ?>
