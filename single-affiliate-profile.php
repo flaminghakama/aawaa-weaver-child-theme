@@ -1,7 +1,7 @@
 <!-- BEGIN single-artist-profile.php  -->
 <?php
 /**
- * The Template for displaying all single artist profiles
+ * The Template for displaying all single affiliate profiles
  *
  * @package WordPress
  * @subpackage Weaver II
@@ -41,7 +41,9 @@ $weaverii_cur_post_id = get_the_ID();
 <?php			    }
 ?>
 			    </nav><!-- #nav-above -->
-<?php 			    get_template_part( 'content', 'single-artist-profile' ); ?>
+<!-- debug sap0 -->
+<?php 			    get_template_part( 'content', 'single-affiliate-profile' ); ?>
+<!-- debug sap1 -->
 
 			    <nav id="nav-below" class="navigation">
 				<h3 class="assistive-text"><?php echo __( 'Post navigation','weaver-ii'); ?></h3>

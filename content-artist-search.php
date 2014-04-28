@@ -39,33 +39,9 @@ require('gallery-lib.php') ;
         AND p.post_type = 'artist-profile'
         ORDER BY t.name ASC";
 
-    $profile_query = "
-        SELECT $wpdb->posts.* 
-        FROM $wpdb->posts 
-        WHERE $wpdb->posts.post_type = 'artist-profile'
-        AND $wpdb->posts.post_status = 'publish' 
-    " ; 
-
-    $profile_posts = $wpdb->get_results($profile_query);
-    global $post; 
-    
-    echo "        <ul>\n" ; 
-    $profiles = array() ; 
-    foreach ($profile_posts as $post):
-        echo "<!-- debug 3 -->\n" ;
-        setup_postdata($post);
-        $this_title = get_the_title() ;
-        $this_permalink = get_permalink() ;
-        $profile_id = get_the_ID() ; 
-        $profile_data = get_profile_data($profile_id) ; 
-        $values = $profile_data['values'] ; 
-        $labels = $profile_data['labels'] ; 
-        $this_image = wp_get_attachment_image_src( get_post_thumbnail_id( $profile_id ), '' );
-        $profiles[] = format_profile_thumbnail($profile_id, $this_permalink, $this_image, $values['first_name'], $values['last_name']) ; 
-    endforeach; 
-    echo "        </ul>\n" ; 
-    echo "    </div>\n" ; 
-    echo "<!-- debug 4 -->\n" ; 
+    echo "<!-- debug 01 -->\n" ; 
+    format_profile_gallery($wpdb, 'artist-profile') ;   
+    echo "<!-- debug 02 -->\n" ; 
 ?>
 </div id="profile-gallery">
 <!-- END  content-artist-search.php  -->

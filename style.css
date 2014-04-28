@@ -3220,6 +3220,7 @@ div.tag span {
 }
 
 .single-artist-profile #nav-below,
+.single-affiliate-profile #nav-below,
 .single-work-of-art #nav-below { 
   display: none ; 
 }

@@ -21,7 +21,8 @@ require('gallery-lib.php') ;
         'location' => 'artist-profile-location', 
 	'ethnicity' => 'artist-profile-ethnicity', 
 	'disciplines' => 'artist-profile-discipline', 
-	'mediums' => 'artist-profile-medium');
+	'mediums' => 'artist-profile-medium'
+    );
 
     $delimiters = array ( 
         'location' => ' and ',

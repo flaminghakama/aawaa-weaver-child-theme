@@ -194,4 +194,49 @@ function get_artist_terms($post_ID, $taxonomies, $delimiters) {
     );
 }
 
+/*
+ *  Echo a formatted DIV for artist profile long fields
+ */
+function format_long_field($label, $value) { 
+    echo
+        "            <div class='long'>\n" .
+        "                <h3>$label</h3>\n" .
+        "                <div>$value</div>\n" .
+        "            </div class='long'>\n" ; 
+}
+
+/*
+ *  Get the gallery of profile thumbnails of either artists or affiliates.
+ *  @param string post_type Either 'artist-profile' or 'affiliate-profile'
+ */
+function format_profile_gallery($wpdb, $post_type) { 
+
+    $profile_query = "
+        SELECT $wpdb->posts.* 
+        FROM $wpdb->posts 
+        WHERE $wpdb->posts.post_type = '$post_type'
+        AND $wpdb->posts.post_status = 'publish' 
+    " ; 
+
+    $profile_posts = $wpdb->get_results($profile_query);
+    global $post; 
+    
+    echo "        <ul>\n" ; 
+    $profiles = array() ; 
+    foreach ($profile_posts as $post):
+        echo "<!-- debug 3 -->\n" ;
+        setup_postdata($post);
+        $this_title = get_the_title() ;
+        $this_permalink = get_permalink() ;
+        $profile_id = get_the_ID() ; 
+        $profile_data = get_profile_data($profile_id) ; 
+        $values = $profile_data['values'] ; 
+        $labels = $profile_data['labels'] ; 
+        $this_image = wp_get_attachment_image_src( get_post_thumbnail_id( $profile_id ), '' );
+        $profiles[] = format_profile_thumbnail($profile_id, $this_permalink, $this_image, $values['first_name'], $values['last_name']) ; 
+    endforeach; 
+    echo "        </ul>\n" ; 
+    echo "    </div>\n" ; 
+    echo "<!-- debug 4 -->\n" ; 
+}
 ?>
