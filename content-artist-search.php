@@ -52,7 +52,7 @@ require('gallery-lib.php') ;
     echo "        <ul>\n" ; 
     $profiles = array() ; 
     foreach ($profile_posts as $post):
-        echo "<!-- debug 3 -->\n" ; 
+        echo "<!-- debug 3 -->\n" ;
         setup_postdata($post);
         $this_title = get_the_title() ;
         $this_permalink = get_permalink() ;
@@ -61,7 +61,7 @@ require('gallery-lib.php') ;
         $values = $profile_data['values'] ; 
         $labels = $profile_data['labels'] ; 
         $this_image = wp_get_attachment_image_src( get_post_thumbnail_id( $profile_id ), '' );
-        $profiles[] = format_profile_thumbnail($this_permalink, $this_image, $values['first_name'], $values['last_name']) ; 
+        $profiles[] = format_profile_thumbnail($profile_id, $this_permalink, $this_image, $values['first_name'], $values['last_name']) ; 
     endforeach; 
     echo "        </ul>\n" ; 
     echo "    </div>\n" ; 

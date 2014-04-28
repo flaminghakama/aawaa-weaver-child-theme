@@ -84,14 +84,17 @@ function imageDimensions($image, $target_width, $target_height) {
 }
 
 /*  Create a thumbnail for an artist profile, linked to its post  */
-function format_profile_thumbnail($permalink, $image, $first_name, $last_name) { 
+function format_profile_thumbnail($profile_id, $permalink, $image, $first_name, $last_name) { 
     $imgSrc = $image[0] ; 
-    $geo = imageDimensions($image, 146, 146) ; 
+    $geo = imageDimensions($image, 167, 146) ; 
     //$dimensions = $geo['relative'] ; 
     $dimensions = $geo['dimensions'] ; 
     $margins = ( $geo['padding'] ) ? "style='" . $geo['padding'] . "'" : "" ; 
     $name = "$first_name $last_name" ; 
-    echo "            <li><div class='artist-profile-wrapper'><div $margins class='profile-thumbnail'><a href='$permalink'><img src='$imgSrc' $dimensions alt='$name'></a></div><p><a href='$permalink'>$name</a></p></div></li>\n" ;  
+    echo "            <li><div class='artist-profile-wrapper'><div $margins class='profile-thumbnail'>" ; 
+    the_post_thumbnail($profile_id, 'artist-profile-gallery-thumbnail') ; 
+    //echo "<a href='$permalink'><img src='$imgSrc' $dimensions alt='$name'></a></div>" ; 
+    echo "<p><a href='$permalink'>$name</a></p></div></li>\n" ;  
 }
 
 /*  Create a thumbnail for a work of art, linked to its post  */

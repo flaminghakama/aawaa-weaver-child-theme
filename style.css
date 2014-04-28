@@ -3270,15 +3270,15 @@ div.tag span {
   width: 167px ; 
   height: 200 px; 
   margin: 0px 15px 31px 0px ; 
-  padding: 0px 10px 0px 10px ; 
+  padding: 0px 0px 0px 0px ; 
   border: 1px solid #dddddd ; 
   overflow: auto ; 
   text-align: center;
 }
 
 #profile-gallery .profile-thumbnail {
-  width: 146px ; 
-  height: 146px ; 
+/*  width: 167px ; 
+  height: 146px ;  */
   text-align: center;
   overflow: auto ; 
 }
@@ -3301,7 +3301,7 @@ div.tag span {
 }
 
 #content #profile-gallery img {
-  max-height: 146px ; 
+  max-height: 146px ;  
 }
 
 #artist-profile-container {
