@@ -3107,6 +3107,11 @@ aawaa-logo.png
 aawaa-header-slogan.png
 */
 
+
+.page .entry-content .featured-image {
+  display: none ; 
+}
+
 /* Artist Profile */
 #artist-profile,
 #work-of-art,
@@ -3255,7 +3260,6 @@ div.tag span {
 #artwork-gallery a {
   overflow:hidden; 
 }
-
 
 #work-of-art #featured-image {
   width: 858px ; 
